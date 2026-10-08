@@ -486,6 +486,26 @@
     .system-list .num { font-family: var(--serif); font-size: 1.5rem; color: var(--accent); line-height: 1; grid-row: span 2; }
     .system-list h3 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(1.5rem, 2.2vw, 2rem); line-height: 1.1; color: var(--paper); }
     .system-list p { margin: 0; color: var(--muted); line-height: 1.7; max-width: 58ch; }
+    /* Lab: films and experiments made with Claude */
+    .lab { border-top: 1px solid var(--line); padding: 14vh 8vw; }
+    .lab-head { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 18px 6vw; align-items: end; margin-bottom: 7vh; }
+    .lab-head h2 { font-size: clamp(2.2rem, 4.2vw, 4.2rem); line-height: 1; max-width: 12ch; }
+    .lab-head p { margin: 0; max-width: 56ch; color: var(--muted); line-height: 1.75; }
+    .lab-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 4vh 2vw; }
+    .lab-item { margin: 0; display: flex; flex-direction: column; gap: 14px; }
+    .lab-item video { width: 100%; height: auto; display: block; background: var(--ink-soft); border: 1px solid var(--line); }
+    .lab-item.wide { grid-column: span 8; }
+    .lab-item.tall { grid-column: span 4; }
+    .lab-item.half { grid-column: span 6; }
+    .lab-item .eyebrow { margin: 0; }
+    .lab-item h3 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(1.5rem, 2.2vw, 2rem); line-height: 1.1; color: var(--paper); }
+    .lab-item p { margin: 0; color: var(--muted); line-height: 1.7; max-width: 58ch; }
+    @media (max-width: 860px) {
+      .lab { padding: 10vh 22px; }
+      .lab-head { grid-template-columns: 1fr; }
+      .lab-item.wide, .lab-item.tall, .lab-item.half { grid-column: 1 / -1; }
+      .lab-item.tall video { max-width: 360px; }
+    }
     .system-note { grid-column: 1 / -1; margin: 0; color: var(--paper); font-family: var(--serif); font-style: italic; font-size: clamp(1.2rem, 1.8vw, 1.6rem); max-width: 48ch; }
     @media (max-width: 860px) {
       .system { grid-template-columns: 1fr; padding: 10vh 22px; }
@@ -950,8 +970,44 @@
       <p class="system-note" data-i18n="systemNote">Agents speed up the work. Concept, space and light are still decided by a designer.</p>
     </section>
 
+    <section class="lab" id="lab" aria-labelledby="labHeading">
+      <div class="lab-head">
+        <div>
+          <p class="eyebrow" data-i18n="labTitle">05 — Lab</p>
+          <h2 class="display" id="labHeading" data-i18n="labHeadline">Films we make with Claude.</h2>
+        </div>
+        <p data-i18n="labLead">Alongside client work, the studio produces its own animation and documentary pieces. Characters, scenes, motion and render pipelines are written as code together with Claude; illustration, sound and taste stay with us. Excerpts below are silent previews.</p>
+      </div>
+      <div class="lab-grid">
+        <figure class="lab-item wide">
+          <video src="lab/oki.mp4" poster="lab/oki.jpg" width="1280" height="720" muted loop playsinline controls preload="none" data-lab-video aria-label="Oki animated episode excerpt"></video>
+          <p class="eyebrow" data-i18n="okiKicker">Kids animation · 3 min episode</p>
+          <h3 data-i18n="okiTitle">Oki — The Octopus</h3>
+          <p data-i18n="okiText">A cartoon episode where Oki explains the octopus in seven surprising facts. The character, ten scenes and the whole render and audio pipeline are code, built with Claude and taught back to our agents as reusable skills.</p>
+        </figure>
+        <figure class="lab-item tall">
+          <video src="lab/ofis.mp4" poster="lab/ofis.jpg" width="540" height="960" muted loop playsinline controls preload="none" data-lab-video aria-label="Office Diary vertical short excerpt"></video>
+          <p class="eyebrow" data-i18n="ofisKicker">Vertical shorts · agent pipeline</p>
+          <h3 data-i18n="ofisTitle">Office Diary</h3>
+          <p data-i18n="ofisText">Short videos about what our AI office did last night. Claude Opus designs the motion templates; agents fill, check and render each episode.</p>
+        </figure>
+        <figure class="lab-item half">
+          <video src="lab/isik.mp4" poster="lab/isik.jpg" width="1280" height="720" muted loop playsinline controls preload="none" data-lab-video aria-label="Science explainer excerpt"></video>
+          <p class="eyebrow" data-i18n="isikKicker">Science explainer · style test</p>
+          <h3 data-i18n="isikTitle">The Light on Your Face Is 170,000 Years Old</h3>
+          <p data-i18n="isikText">Illustrated layers combined with code-driven animation for a Turkish science channel in development.</p>
+        </figure>
+        <figure class="lab-item half">
+          <video src="lab/atlas.mp4" poster="lab/atlas.jpg" width="1280" height="720" muted loop playsinline controls preload="none" data-lab-video aria-label="3I/ATLAS documentary excerpt"></video>
+          <p class="eyebrow" data-i18n="atlasKicker">Short documentary · sourced</p>
+          <h3 data-i18n="atlasTitle">A Traveller Older Than the Sun</h3>
+          <p data-i18n="atlasText">The story of interstellar object 3I/ATLAS, told with public observatory imagery. Every image carries its source and licence on screen.</p>
+        </figure>
+      </div>
+    </section>
+
     <section class="contact" id="contact">
-      <p class="eyebrow" data-i18n="contactTitle">05 — Contact</p>
+      <p class="eyebrow" data-i18n="contactTitle">06 — Contact</p>
       <h2 class="display" data-i18n="contactHeadline">Let’s turn your next brand idea into a space people remember.</h2>
       <p data-i18n="contactNote">Available for event, exhibition and brand experience collaborations.</p>
       <div class="contact-actions">
@@ -973,10 +1029,10 @@
     (() => {
       const translations = {
         en: {
-          skip:'Skip to selected work', viewWork:'View work', role:'Spatial & Brand Experience Designer', heroTitle:'I shape brand ideas into spaces people can enter, move through and remember.', heroLead:'Concept, flow, material, light and visual communication — developed as one coherent experience.', viewSelected:'View selected work', enterStory:'Enter the story', pointOfView:'01 — Point of view', vision:'Vision', visionLead:'Before a space is drawn, it must know what it wants people to feel.', scrollCue:'Scroll to shape the story', selectedWork:'02 — Selected work', workTitle:'A brand idea, brought to the floor.', workLead:'Selected work across events, exhibitions, brand experiences and interiors.', revisited:'Revisited concept · 2026', gratisKicker:'Gratis', gratisTitle:'Harikalar Diyarı', gratisSubtitle:'Immersive event design · Brand experience', gratisIdea:'A Wonderland-inspired journey that moves visitors from arrival and discovery to workshops and the main stage.', gratisGallery:'Gratis — a journey through the brand world', gCard:'Discovery landmark · house of cards', gWelcome:'Entrance · welcome and ticketing', gTicket:'Arrival · ticket booth', gKeyhole:'Transition · follow the white rabbit', gWorkshop:'Participation · workshop', gBook:'Discovery · book corner', gRabbit:'Character · white rabbit', tagConcept:'Concept', tagFlow:'Flow', tagMaterial:'Material', tagLight:'Light', tagVisualisation:'Visualisation', tagMotion:'Motion', methodTitle:'03 — From idea to space', methodLead:'From the first idea to the final atmosphere, I shape <strong>concept, flow, material, light and presentation</strong> as one system.', contactTitle:'05 — Contact', contactHeadline:'Let’s turn your next brand idea into a space people remember.', contactNote:'Available for event, exhibition and brand experience collaborations.', startConversation:'Start a conversation', backTop:'Back to the beginning', footer:'TEMİZ STUDIO · Spatial & Brand Experience Design · 2026', systemTitle:'04 — Studio system', systemHeadline:'A studio that runs on its own AI agents.', systemLead:'Behind the work is Hermes, an agent operating system I built for the studio. It runs on Claude and local models, and takes on the repeatable parts of production so the design time goes where it matters.', sys1Title:'Research and brief', sys1Text:'Agents collect references, brand material and venue information, then turn them into a structured brief with sources.', sys2Title:'Visual exploration', sys2Text:'Early mood and concept variations are generated and compared quickly, before any 3D modelling starts.', sys3Title:'Production tracking', sys3Text:'Render queues, revisions and deliveries are tracked by the system, with every decision and file kept as evidence.', sys4Title:'Code and tools', sys4Text:'The same agents write the studio’s own tools: this website, presentation pages and production automations.', systemNote:'Agents speed up the work. Concept, space and light are still decided by a designer.'
+          skip:'Skip to selected work', viewWork:'View work', role:'Spatial & Brand Experience Designer', heroTitle:'I shape brand ideas into spaces people can enter, move through and remember.', heroLead:'Concept, flow, material, light and visual communication — developed as one coherent experience.', viewSelected:'View selected work', enterStory:'Enter the story', pointOfView:'01 — Point of view', vision:'Vision', visionLead:'Before a space is drawn, it must know what it wants people to feel.', scrollCue:'Scroll to shape the story', selectedWork:'02 — Selected work', workTitle:'A brand idea, brought to the floor.', workLead:'Selected work across events, exhibitions, brand experiences and interiors.', revisited:'Revisited concept · 2026', gratisKicker:'Gratis', gratisTitle:'Harikalar Diyarı', gratisSubtitle:'Immersive event design · Brand experience', gratisIdea:'A Wonderland-inspired journey that moves visitors from arrival and discovery to workshops and the main stage.', gratisGallery:'Gratis — a journey through the brand world', gCard:'Discovery landmark · house of cards', gWelcome:'Entrance · welcome and ticketing', gTicket:'Arrival · ticket booth', gKeyhole:'Transition · follow the white rabbit', gWorkshop:'Participation · workshop', gBook:'Discovery · book corner', gRabbit:'Character · white rabbit', tagConcept:'Concept', tagFlow:'Flow', tagMaterial:'Material', tagLight:'Light', tagVisualisation:'Visualisation', tagMotion:'Motion', methodTitle:'03 — From idea to space', methodLead:'From the first idea to the final atmosphere, I shape <strong>concept, flow, material, light and presentation</strong> as one system.', contactTitle:'06 — Contact', contactHeadline:'Let’s turn your next brand idea into a space people remember.', contactNote:'Available for event, exhibition and brand experience collaborations.', startConversation:'Start a conversation', backTop:'Back to the beginning', footer:'TEMİZ STUDIO · Spatial & Brand Experience Design · 2026', systemTitle:'04 — Studio system', systemHeadline:'A studio that runs on its own AI agents.', systemLead:'Behind the work is Hermes, an agent operating system I built for the studio. It runs on Claude and local models, and takes on the repeatable parts of production so the design time goes where it matters.', sys1Title:'Research and brief', sys1Text:'Agents collect references, brand material and venue information, then turn them into a structured brief with sources.', sys2Title:'Visual exploration', sys2Text:'Early mood and concept variations are generated and compared quickly, before any 3D modelling starts.', sys3Title:'Production tracking', sys3Text:'Render queues, revisions and deliveries are tracked by the system, with every decision and file kept as evidence.', sys4Title:'Code and tools', sys4Text:'The same agents write the studio’s own tools: this website, presentation pages and production automations.', systemNote:'Agents speed up the work. Concept, space and light are still decided by a designer.', labTitle:'05 — Lab', labHeadline:'Films we make with Claude.', labLead:'Alongside client work, the studio produces its own animation and documentary pieces. Characters, scenes, motion and render pipelines are written as code together with Claude; illustration, sound and taste stay with us. Excerpts below are silent previews.', okiKicker:'Kids animation · 3 min episode', okiTitle:'Oki — The Octopus', okiText:'A cartoon episode where Oki explains the octopus in seven surprising facts. The character, ten scenes and the whole render and audio pipeline are code, built with Claude and taught back to our agents as reusable skills.', ofisKicker:'Vertical shorts · agent pipeline', ofisTitle:'Office Diary', ofisText:'Short videos about what our AI office did last night. Claude Opus designs the motion templates; agents fill, check and render each episode.', isikKicker:'Science explainer · style test', isikTitle:'The Light on Your Face Is 170,000 Years Old', isikText:'Illustrated layers combined with code-driven animation for a Turkish science channel in development.', atlasKicker:'Short documentary · sourced', atlasTitle:'A Traveller Older Than the Sun', atlasText:'The story of interstellar object 3I/ATLAS, told with public observatory imagery. Every image carries its source and licence on screen.'
         },
         tr: {
-          skip:'Seçili işlere geç', viewWork:'İşleri gör', role:'Mekansal & Marka Deneyimi Tasarımcısı', heroTitle:'Marka fikirlerini insanların içine girdiği, dolaştığı ve hatırladığı mekanlara dönüştürüyorum.', heroLead:'Konsept, akış, malzeme, ışık ve görsel iletişimi tek bir deneyim olarak kurguluyorum.', viewSelected:'Seçili işleri gör', enterStory:'Hikayeye gir', pointOfView:'01 — Bakış açısı', vision:'Vizyon', visionLead:'Bir mekan çizilmeden önce, insanlara ne hissettireceğini bilmelidir.', scrollCue:'Hikayeyi şekillendirmek için kaydır', selectedWork:'02 — Seçili işler', workTitle:'Marka fikri, mekana dönüştüğünde.', workLead:'Etkinlik, fuar, marka deneyimi ve iç mekanlardan seçili projeler.', revisited:'Yeniden yorumlanan konsept · 2026', gratisKicker:'Gratis', gratisTitle:'Harikalar Diyarı', gratisSubtitle:'Deneyim odaklı etkinlik tasarımı · Marka dünyası', gratisIdea:'Ziyaretçiyi karşılamadan keşfe, atölyelerden ana sahneye taşıyan Harikalar Diyarı temalı bir etkinlik deneyimi.', gratisGallery:'Gratis — marka dünyasında bir yolculuk', gCard:'Keşif odağı · iskambil kulesi', gWelcome:'Giriş · karşılama ve bilet', gTicket:'Karşılama · bilet alanı', gKeyhole:'Geçiş · beyaz tavşanı takip et', gWorkshop:'Katılım · atölye', gBook:'Keşif · kitap köşesi', gRabbit:'Karakter · beyaz tavşan', tagConcept:'Konsept', tagFlow:'Akış', tagMaterial:'Malzeme', tagLight:'Işık', tagVisualisation:'Görselleştirme', tagMotion:'Hareket', methodTitle:'03 — Fikirden mekana', methodLead:'İlk fikirden son atmosfere kadar <strong>konsepti, akışı, malzemeyi, ışığı ve sunumu</strong> tek bir sistem olarak kurguluyorum.', contactTitle:'05 — İletişim', contactHeadline:'Bir sonraki marka fikrinizi insanların hatırlayacağı bir mekana dönüştürelim.', contactNote:'Etkinlik, fuar ve marka deneyimi projeleri için iletişime geçebilirsiniz.', startConversation:'İletişime geç', backTop:'Başa dön', footer:'TEMİZ STUDIO · Mekansal & Marka Deneyimi Tasarımı · 2026', systemTitle:'04 — Stüdyo sistemi', systemHeadline:'Kendi yapay zekâ ajanlarıyla çalışan bir stüdyo.', systemLead:'İşlerin arkasında stüdyo için kurduğum Hermes adlı ajan işletim sistemi var. Claude ve yerel modellerle çalışıyor; üretimin tekrar eden kısmını üstleniyor, tasarım zamanı asıl gereken yere kalıyor.', sys1Title:'Araştırma ve brief', sys1Text:'Ajanlar referansları, marka malzemesini ve mekân bilgisini toplar; kaynaklarıyla birlikte düzenli bir brief çıkarır.', sys2Title:'Görsel keşif', sys2Text:'İlk atmosfer ve konsept varyasyonları 3D modellemeye başlamadan hızlıca üretilip karşılaştırılır.', sys3Title:'Üretim takibi', sys3Text:'Render kuyruğu, revizyonlar ve teslimler sistemde izlenir; her karar ve dosya kanıtıyla saklanır.', sys4Title:'Kod ve araçlar', sys4Text:'Aynı ajanlar stüdyonun kendi araçlarını da yazar: bu site, sunum sayfaları ve üretim otomasyonları.', systemNote:'Ajanlar işi hızlandırır. Konsepti, mekânı ve ışığı yine bir tasarımcı belirler.'
+          skip:'Seçili işlere geç', viewWork:'İşleri gör', role:'Mekansal & Marka Deneyimi Tasarımcısı', heroTitle:'Marka fikirlerini insanların içine girdiği, dolaştığı ve hatırladığı mekanlara dönüştürüyorum.', heroLead:'Konsept, akış, malzeme, ışık ve görsel iletişimi tek bir deneyim olarak kurguluyorum.', viewSelected:'Seçili işleri gör', enterStory:'Hikayeye gir', pointOfView:'01 — Bakış açısı', vision:'Vizyon', visionLead:'Bir mekan çizilmeden önce, insanlara ne hissettireceğini bilmelidir.', scrollCue:'Hikayeyi şekillendirmek için kaydır', selectedWork:'02 — Seçili işler', workTitle:'Marka fikri, mekana dönüştüğünde.', workLead:'Etkinlik, fuar, marka deneyimi ve iç mekanlardan seçili projeler.', revisited:'Yeniden yorumlanan konsept · 2026', gratisKicker:'Gratis', gratisTitle:'Harikalar Diyarı', gratisSubtitle:'Deneyim odaklı etkinlik tasarımı · Marka dünyası', gratisIdea:'Ziyaretçiyi karşılamadan keşfe, atölyelerden ana sahneye taşıyan Harikalar Diyarı temalı bir etkinlik deneyimi.', gratisGallery:'Gratis — marka dünyasında bir yolculuk', gCard:'Keşif odağı · iskambil kulesi', gWelcome:'Giriş · karşılama ve bilet', gTicket:'Karşılama · bilet alanı', gKeyhole:'Geçiş · beyaz tavşanı takip et', gWorkshop:'Katılım · atölye', gBook:'Keşif · kitap köşesi', gRabbit:'Karakter · beyaz tavşan', tagConcept:'Konsept', tagFlow:'Akış', tagMaterial:'Malzeme', tagLight:'Işık', tagVisualisation:'Görselleştirme', tagMotion:'Hareket', methodTitle:'03 — Fikirden mekana', methodLead:'İlk fikirden son atmosfere kadar <strong>konsepti, akışı, malzemeyi, ışığı ve sunumu</strong> tek bir sistem olarak kurguluyorum.', contactTitle:'06 — İletişim', contactHeadline:'Bir sonraki marka fikrinizi insanların hatırlayacağı bir mekana dönüştürelim.', contactNote:'Etkinlik, fuar ve marka deneyimi projeleri için iletişime geçebilirsiniz.', startConversation:'İletişime geç', backTop:'Başa dön', footer:'TEMİZ STUDIO · Mekansal & Marka Deneyimi Tasarımı · 2026', systemTitle:'04 — Stüdyo sistemi', systemHeadline:'Kendi yapay zekâ ajanlarıyla çalışan bir stüdyo.', systemLead:'İşlerin arkasında stüdyo için kurduğum Hermes adlı ajan işletim sistemi var. Claude ve yerel modellerle çalışıyor; üretimin tekrar eden kısmını üstleniyor, tasarım zamanı asıl gereken yere kalıyor.', sys1Title:'Araştırma ve brief', sys1Text:'Ajanlar referansları, marka malzemesini ve mekân bilgisini toplar; kaynaklarıyla birlikte düzenli bir brief çıkarır.', sys2Title:'Görsel keşif', sys2Text:'İlk atmosfer ve konsept varyasyonları 3D modellemeye başlamadan hızlıca üretilip karşılaştırılır.', sys3Title:'Üretim takibi', sys3Text:'Render kuyruğu, revizyonlar ve teslimler sistemde izlenir; her karar ve dosya kanıtıyla saklanır.', sys4Title:'Kod ve araçlar', sys4Text:'Aynı ajanlar stüdyonun kendi araçlarını da yazar: bu site, sunum sayfaları ve üretim otomasyonları.', systemNote:'Ajanlar işi hızlandırır. Konsepti, mekânı ve ışığı yine bir tasarımcı belirler.', labTitle:'05 — Lab', labHeadline:'Claude ile yaptığımız filmler.', labLead:'Müşteri işlerinin yanında stüdyo kendi animasyon ve belgesel işlerini de üretiyor. Karakterler, sahneler, hareket ve render hattı Claude ile birlikte kod olarak yazılıyor; illüstrasyon, ses ve zevk bizde kalıyor. Aşağıdakiler sessiz önizleme kesitleri.', okiKicker:'Çocuk animasyonu · 3 dk bölüm', okiTitle:'Oki — Ahtapot', okiText:'Oki’nin ahtapotu yedi şaşırtıcı bilgiyle anlattığı çizgi film bölümü. Karakter, on sahne ve tüm render ve ses hattı kod; Claude ile kuruldu ve ajanlarımıza tekrar kullanılabilir beceri olarak öğretildi.', ofisKicker:'Dikey kısa video · ajan hattı', ofisTitle:'Ofis Günlüğü', ofisText:'Yapay zekâ ofisimizin dün gece ne yaptığını anlatan kısa videolar. Hareket kalıplarını Claude Opus tasarlıyor; ajanlar her bölümü dolduruyor, kontrol ediyor ve render ediyor.', isikKicker:'Bilim anlatımı · stil testi', isikTitle:'Yüzüne Vuran Işık 170 Bin Yaşında', isikText:'Hazırlanmakta olan Türkçe bilim kanalı için illüstrasyon katmanları ve kodla yazılmış animasyon.', atlasKicker:'Kısa belgesel · kaynaklı', atlasTitle:'Güneş’ten Eski Bir Yolcu', atlasText:'Yıldızlararası cisim 3I/ATLAS’ın hikâyesi, gözlemevlerinin kamuya açık görüntüleriyle. Her görselin kaynağı ve lisansı ekranda yazıyor.'
         }
       };
       const languageButton = document.getElementById('langSwitch');
@@ -1382,6 +1438,21 @@
         }
       });
 
+    })();
+  </script>
+  <script>
+    // Lab previews play only while visible, and never on their own under reduced motion.
+    (() => {
+      const vids = document.querySelectorAll('[data-lab-video]');
+      if (!vids.length || !('IntersectionObserver' in window)) return;
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const io = new IntersectionObserver((entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) { e.target.preload = 'auto'; e.target.play().catch(() => {}); }
+          else e.target.pause();
+        }
+      }, { threshold: 0.5 });
+      vids.forEach((v) => io.observe(v));
     })();
   </script>
 </body>
