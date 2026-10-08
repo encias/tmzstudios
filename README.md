@@ -6,7 +6,7 @@ Live: https://tmzstudios.com
 
 ## What's inside
 
-- `index.html` — single-page, bilingual (EN/TR) portfolio. Ten selected cases across events, exhibitions, brand experiences and interiors.
+- `public/index.html` — single-page, bilingual (EN/TR) portfolio. Ten selected cases across events, exhibitions, brand experiences and interiors.
 - Scroll-scrubbed hero video (`scene_1_kling25_correct_landscape_seek.mp4`) driven by GSAP ScrollTrigger (`lib/`).
 - `selected_work_final/` and `gratis_final/` — optimised desktop (JPG) and mobile (WebP) renders.
 
@@ -14,10 +14,10 @@ Live: https://tmzstudios.com
 
 The studio runs on **Hermes**, its own AI agent operating system (Claude + local models). The same agents that handle research, visual exploration and production tracking wrote and maintain this site: Codex and Claude Code built the page, Claude Code added the studio-system section and set up the domain, mail routing and deployment.
 
-Static site — no build step. Deployed on Cloudflare Pages.
+Static site — no build step. Deployed on Cloudflare Workers (static assets) via `npx wrangler deploy`.
 
 ```bash
-npx http-server . -p 8080
+npx http-server public -p 8080
 ```
 
 ## Contact
