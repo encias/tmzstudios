@@ -1,0 +1,1388 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="description" content="Temiz Studio — spatial and brand experience design portfolio.">
+  <meta name="theme-color" content="#0d0a08">
+  <title>TEMİZ STUDIO — Spatial &amp; Brand Experience Design</title>
+  <link rel="preload" as="image" href="media/poster_hero.jpg" fetchpriority="high">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&amp;family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0d0a08;
+      --ink-soft: #17110e;
+      --paper: #f1e9df;
+      --muted: #a99c8e;
+      --line: rgba(241,233,223,.16);
+      --accent: #c7a679;
+      --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: var(--ink); }
+    body {
+      min-width: 320px;
+      overflow-x: hidden;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--sans);
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+    img, video { max-width: 100%; }
+    a { color: inherit; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+    .skip-link {
+      position: fixed;
+      z-index: 1000;
+      top: 12px;
+      left: 12px;
+      transform: translateY(-150%);
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--ink);
+      font-size: .75rem;
+      text-decoration: none;
+      transition: transform .2s ease;
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    .site-brand,
+    .work-link {
+      position: fixed;
+      z-index: 120;
+      top: max(20px, env(safe-area-inset-top));
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+    }
+    .site-brand { left: max(22px, env(safe-area-inset-left)); }
+    .work-link {
+      right: max(22px, env(safe-area-inset-right));
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(0,0,0,.28);
+      text-decoration: none;
+      backdrop-filter: blur(8px);
+    }
+    .lang-switch {
+      position: fixed;
+      z-index: 125;
+      top: max(24px, env(safe-area-inset-top));
+      right: max(132px, calc(110px + env(safe-area-inset-right)));
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font: 500 .62rem/1 var(--sans);
+      letter-spacing: .16em;
+      cursor: pointer;
+    }
+    .lang-switch span { transition: color .2s ease; }
+    .lang-switch [aria-current="true"] { color: var(--paper); }
+    .page-progress {
+      position: fixed;
+      z-index: 130;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      transform: scaleX(0);
+      transform-origin: left center;
+      will-change: transform;
+      background: linear-gradient(90deg, var(--accent), var(--paper));
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .26em;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+    .display { font-family: var(--serif); font-weight: 300; }
+
+    /* Hero / Vision */
+    .intro { position: relative; height: 350vh; background: #000; }   /* longer track = slower, calmer scrub */
+    .intro-sticky {
+      position: sticky;
+      top: 0;
+      height: 100svh;
+      overflow: hidden;
+      isolation: isolate;
+      background: #050403;
+    }
+    .intro-sticky video {
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: #050403;
+    }
+    .intro-sticky::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background: linear-gradient(90deg, rgba(8,6,5,.99) 0%, rgba(8,6,5,.94) 31%, rgba(8,6,5,.7) 45%, rgba(8,6,5,.08) 72%);
+      pointer-events: none;
+    }
+    .intro-sticky::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(180deg, rgba(0,0,0,.22), transparent 35%, rgba(0,0,0,.32));
+      pointer-events: none;
+    }
+    .intro-copy {
+      position: absolute;
+      top: clamp(140px, 18vh, 220px);
+      left: clamp(24px, 8vw, 120px);
+      width: min(620px, 48vw);
+      transform: none;
+    }
+    .intro-copy h1 {
+      max-width: 24ch;
+      margin-top: 18px;
+      font-size: clamp(1.45rem, 2.35vw, 2.35rem);
+      line-height: 1.16;
+      letter-spacing: -.003em;
+    }
+    .intro-copy .lead {
+      max-width: 43ch;
+      margin-top: 24px;
+      color: #d4c9bd;
+      font-size: clamp(.95rem, 1.35vw, 1.2rem);
+      line-height: 1.7;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 12px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .16em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .button.primary { background: var(--paper); color: var(--ink); }
+    .vision-copy { opacity: 0; pointer-events: none; }
+    .intro-copy.vision-copy { top: clamp(230px, 32vh, 380px); }   /* Vision sits a bit lower */
+    .hero-copy { display: block; }
+    .vision-copy h2 {
+      margin-top: 16px;
+      font-size: clamp(2.8rem, 4.8vw, 5rem);
+      line-height: .95;
+      letter-spacing: -.005em;
+    }
+    .vision-copy .lead { max-width: 36ch; }
+    .scroll-cue {
+      position: absolute;
+      left: 50%;
+      bottom: max(24px, env(safe-area-inset-bottom));
+      transform: translateX(-50%);
+      font-size: .62rem;
+      font-weight: 500;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Shared sections */
+    main { display: block; }
+    .chapter,
+    .method,
+    .contact {
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      padding: 12vh 8vw;
+      text-align: center;
+    }
+    .chapter h2,
+    .contact h2 { max-width: 18ch; font-size: clamp(2.4rem, 5vw, 5rem); line-height: 1; }
+    .chapter p,
+    .method p { max-width: 56ch; color: var(--muted); line-height: 1.75; }
+    .case { content-visibility: auto; contain-intrinsic-size: 1200px; }
+    .act {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(240px, 330px);
+      align-items: center;
+      gap: clamp(30px, 5vw, 80px);
+      padding: 12vh max(6vw, 24px);
+      overflow: clip;
+    }
+    .stage { position: relative; min-width: 0; }
+    .ground {
+      position: absolute;
+      left: 50%;
+      bottom: -5%;
+      width: 88%;
+      height: 55px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(0,0,0,.68), transparent 70%);
+      filter: blur(8px);
+      opacity: .85;
+    }
+    .drop {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 4px;
+      background: #070604;
+      box-shadow: 0 35px 90px -42px #000;
+    }
+    .drop img { display: block; width: 100%; height: auto; }
+    .status {
+      position: absolute;
+      left: 18px;
+      bottom: 16px;
+      padding: 6px 10px;
+      border: 1px solid rgba(199,166,121,.5);
+      border-radius: 999px;
+      background: rgba(10,8,6,.76);
+      color: var(--accent);
+      font-size: .58rem;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      backdrop-filter: blur(6px);
+    }
+    .caption .index { color: var(--accent); font-size: .62rem; letter-spacing: .2em; }
+    .caption .project-kicker {
+      margin-top: 12px;
+      color: var(--accent);
+      font-size: .65rem;
+      font-weight: 500;
+      letter-spacing: .2em;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+    .caption h3 {
+      max-width: 15ch;
+      margin: 6px 0 10px;
+      font-size: clamp(2.2rem, 2.7vw, 2.6rem);
+      font-weight: 300;
+      letter-spacing: 0;
+      line-height: 1.02;
+    }
+    .caption .category {
+      max-width: 44ch;
+      color: var(--muted);
+      font-size: .74rem;
+      letter-spacing: .035em;
+      line-height: 1.55;
+    }
+    .caption .idea {
+      max-width: 34ch;
+      margin-top: 14px;
+      font-family: var(--serif);
+      font-size: clamp(.98rem, 1.05vw, 1.08rem);
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.48;
+    }
+    .caption .idea::before { content: "“"; }
+    .caption .idea::after { content: "”"; }
+    .frames-wrap {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 28px;
+      padding: 9vh max(6vw, 24px) 14vh;
+    }
+    .frames-title { color: var(--muted); text-align: center; font-family: var(--serif); font-size: 1.35rem; }
+    .frames {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+      gap: 14px;
+      max-width: 1180px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .frames figure { overflow: hidden; border-radius: 3px; }
+    .frames img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; background: #070604; }
+    .frames figcaption { padding: 10px 2px; color: var(--muted); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; }
+    .gratis-case { background: #080508; }
+    .gratis-act {
+      position: relative;
+      display: block;
+      min-height: 100svh;
+      padding: 0;
+      overflow: hidden;
+    }
+    .gratis-act .stage,
+    .gratis-act .drop { width: 100%; height: 100svh; border: 0; border-radius: 0; }
+    .gratis-act .drop::after,
+    .gratis-journey figure::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(7,4,8,.06) 48%, rgba(7,4,8,.82) 100%);
+      pointer-events: none;
+    }
+    .gratis-act .drop img,
+    .gratis-journey img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .gratis-act .caption {
+      position: absolute;
+      z-index: 3;
+      left: max(6vw, 24px);
+      bottom: clamp(34px, 7vh, 88px);
+      width: min(610px, calc(100% - 48px));
+      text-shadow: 0 2px 26px rgba(0,0,0,.8);
+    }
+    .gratis-act .caption .category { color: #e0d4e3; }
+    .gratis-act .caption .idea { max-width: 52ch; }
+    .gratis-journey { padding: 0; }
+    .gratis-journey .frames {
+      display: block;
+      max-width: none;
+      margin: 0;
+    }
+    .gratis-journey figure {
+      position: relative;
+      width: 100%;
+      height: 100svh;
+      overflow: hidden;
+      border-radius: 0;
+    }
+    .gratis-journey figcaption {
+      position: absolute;
+      z-index: 2;
+      left: max(6vw, 24px);
+      bottom: clamp(28px, 6vh, 72px);
+      padding: 0;
+      color: #fff;
+      font-size: .68rem;
+      text-shadow: 0 2px 18px rgba(0,0,0,.9);
+    }
+    .gratis-journey-title {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+    }
+
+    /* Every project is a full-screen spatial sequence. Each following panel
+       paints over the sticky panel before it, creating a clean scene cut. */
+    .case { content-visibility: visible; contain-intrinsic-size: auto; background: #080608; }
+    .case .act {
+      position: sticky;
+      z-index: 0;
+      top: 0;
+      display: block;
+      min-height: 100svh;
+      padding: 0;
+      overflow: hidden;
+    }
+    .case .act .stage,
+    .case .act .drop {
+      width: 100%;
+      height: 100svh;
+      border: 0;
+      border-radius: 0;
+    }
+    .case .act .ground { display: none; }
+    .case .act .drop::after,
+    .case .frames figure::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(7,4,8,.03) 50%, rgba(7,4,8,.8) 100%);
+      pointer-events: none;
+    }
+    .case .act .drop img,
+    .case .frames img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: auto;
+      object-fit: cover;
+      object-position: center;
+    }
+    .case .act .caption {
+      position: absolute;
+      z-index: 3;
+      left: max(6vw, 24px);
+      bottom: clamp(34px, 7vh, 88px);
+      width: min(610px, calc(100% - 48px));
+      color: var(--paper);
+      text-shadow: 0 2px 26px rgba(0,0,0,.85);
+    }
+    .case .act .caption .category { color: #e0d4e3; }
+    .case .frames-wrap { min-height: 0; padding: 0; gap: 0; }
+    .case .frames-title {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+    }
+    .case .frames { display: block; width: 100%; max-width: none; margin: 0; }
+    .case .frames figure {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      height: 100svh;
+      overflow: hidden;
+      border-radius: 0;
+      background: #080608;
+    }
+    .case .frames figcaption {
+      position: absolute;
+      z-index: 2;
+      left: max(6vw, 24px);
+      bottom: clamp(28px, 6vh, 72px);
+      padding: 0;
+      color: #fff;
+      text-shadow: 0 2px 18px rgba(0,0,0,.9);
+    }
+
+    .method { min-height: 65vh; border-top: 1px solid var(--line); }
+    .method p { color: var(--paper); font-family: var(--serif); font-size: clamp(1.3rem, 2.2vw, 2rem); }
+    .method-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px; }
+    .method-tags span { padding: 8px 13px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; }
+
+    /* Studio system: AI-assisted production, laid out as a numbered ledger */
+    .system { border-top: 1px solid var(--line); padding: 14vh 8vw; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 6vh 6vw; align-items: start; }
+    .system-head { position: sticky; top: 12vh; display: flex; flex-direction: column; gap: 18px; }
+    .system-head h2 { font-size: clamp(2.2rem, 4.2vw, 4.2rem); line-height: 1; max-width: 12ch; }
+    .system-head p { max-width: 42ch; color: var(--muted); line-height: 1.75; margin: 0; }
+    .system-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+    .system-list li { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 6px 18px; padding: 28px 0; border-bottom: 1px solid var(--line); }
+    .system-list .num { font-family: var(--serif); font-size: 1.5rem; color: var(--accent); line-height: 1; grid-row: span 2; }
+    .system-list h3 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(1.5rem, 2.2vw, 2rem); line-height: 1.1; color: var(--paper); }
+    .system-list p { margin: 0; color: var(--muted); line-height: 1.7; max-width: 58ch; }
+    .system-note { grid-column: 1 / -1; margin: 0; color: var(--paper); font-family: var(--serif); font-style: italic; font-size: clamp(1.2rem, 1.8vw, 1.6rem); max-width: 48ch; }
+    @media (max-width: 860px) {
+      .system { grid-template-columns: 1fr; padding: 10vh 22px; }
+      .system-head { position: static; }
+    }
+
+    .contact { min-height: 88vh; background: radial-gradient(100% 90% at 30% 100%, #20150f, var(--ink) 65%); }
+    .contact p { max-width: 48ch; color: var(--muted); line-height: 1.7; }
+    .contact-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      margin-top: 8px;
+    }
+    .social-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .button.social {
+      min-width: 148px;
+      border-color: rgba(199,166,121,.58);
+      background: linear-gradient(180deg, rgba(199,166,121,.13), rgba(199,166,121,.05));
+      color: #e0bd88;
+      transition: border-color .2s ease, background .2s ease, color .2s ease, transform .2s ease;
+    }
+    .button.social:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      background: rgba(199,166,121,.16);
+      color: #f0d3a6;
+    }
+    .footer { margin-top: 36px; color: var(--muted); font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; }
+
+    /* Mobile hero: the textless 9:16 film is scrubbed directly by page scroll. */
+    @media (max-width: 820px) {
+      .work-link { font-size: .58rem; padding: 8px 11px; }
+      .lang-switch { top: max(58px, calc(42px + env(safe-area-inset-top))); right: max(22px, env(safe-area-inset-right)); }
+      .intro { height: 260svh; min-height: 260svh; }
+      .intro-sticky {
+        position: sticky;
+        top: 0;
+        min-height: 0;
+        height: 100svh;
+        background: #050403;
+      }
+      .intro-sticky video {
+        display: block;
+        object-fit: cover;
+        object-position: 50% 50%;
+      }
+      .intro-sticky::before { background: linear-gradient(180deg, rgba(5,4,3,.12), rgba(5,4,3,.22) 50%, rgba(5,4,3,.9)); }
+      .intro-copy {
+        position: absolute;
+        top: auto;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        transform: none;
+        padding: 24vh 24px max(74px, calc(54px + env(safe-area-inset-bottom)));
+        will-change: opacity, transform;
+      }
+      .intro-copy h1 { max-width: 20ch; font-size: clamp(1.7rem, 6.4vw, 2.6rem); line-height: 1.12; letter-spacing: -.005em; }
+      .intro-copy .lead { max-width: 34ch; font-size: .94rem; }
+      .vision-copy { display: flex; opacity: 0; }
+      .intro-copy.vision-copy { top: auto; }
+      .vision-copy h2 { font-size: clamp(2.5rem, 11vw, 3.8rem); letter-spacing: -.005em; }
+      .scroll-cue { display: block; bottom: max(20px, env(safe-area-inset-bottom)); }
+      .act {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 11vh 22px 4vh;
+        overflow: visible;
+      }
+      .case { content-visibility: visible; contain-intrinsic-size: auto; }
+      .stage, .drop { width: 100%; max-width: 100%; }
+      .drop { overflow: hidden; }
+      .drop img,
+      .frames img {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto !important;
+        aspect-ratio: auto !important;
+        object-fit: contain !important;
+      }
+      .case .act .drop img,
+      .case .frames img {
+        height: 100% !important;
+        object-fit: cover !important;
+      }
+      .caption { text-align: left; }
+      .caption h3 { max-width: 10ch; font-size: clamp(2.7rem, 13vw, 4.8rem); }
+      .caption .project-kicker { margin-top: 13px; font-size: .61rem; }
+      .caption .idea { max-width: 31ch; font-size: 1rem; }
+      .frames-wrap { min-height: auto; padding: 4vh 22px 10vh; }
+      .frames { grid-template-columns: 1fr; }
+      .gratis-act .stage,
+      .gratis-act .drop,
+      .gratis-journey figure { height: 100svh; }
+      .gratis-act .drop img,
+      .gratis-journey img { height: 100% !important; object-fit: cover !important; }
+      .frames figure { overflow: visible; }
+      .chapter { min-height: 75svh; }
+      .social-links { width: 100%; }
+      .button.social { min-width: min(42vw, 170px); }
+    }
+
+    /* Project player: one sticky viewport per project, one active scene.
+       Each scene resists briefly like a pulled slide, then glides upward before the hard cut. */
+    html.js-project-player .case {
+      --scene-count: 1;
+      position: relative;
+      height: calc((var(--scene-count) + 1) * 100svh);
+      min-height: 100svh;
+      background: #080608;
+    }
+    html.js-project-player .case .act {
+      position: sticky;
+      z-index: 1;
+      top: 0;
+      display: block;
+      width: 100%;
+      height: 100svh;
+      min-height: 100svh;
+      padding: 0;
+      overflow: hidden;
+    }
+    html.js-project-player .case .act .stage {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    html.js-project-player .case .drop,
+    html.js-project-player .case .ground,
+    html.js-project-player .case .frames-wrap,
+    html.js-project-player .gratis-journey { display: none; }
+    .project-scenes { position: absolute; inset: 0; }
+    .project-scene {
+      position: absolute;
+      inset: clamp(10px, 2vh, 30px);   /* small breathing room; image sits on the black */
+      opacity: 0;
+      visibility: hidden;
+      transition: none;
+      background: #050403;
+      overflow: hidden;
+    }
+    .project-scene.is-active {
+      z-index: 1;
+      opacity: 1;
+      visibility: visible;
+    }
+    .project-scene::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(7,4,8,.42) 0%, rgba(7,4,8,.16) 20%, rgba(7,4,8,0) 42%),
+        linear-gradient(180deg, rgba(7,4,8,0) 62%, rgba(7,4,8,.42) 100%);
+      pointer-events: none;
+    }
+    .project-scene img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;          /* show the full render — never crop top/sides */
+      object-position: center;
+      transform: none;
+      transform-origin: center;
+    }
+    .project-scene.is-active img { will-change: transform; }
+    html.js-project-player .case .caption {
+      position: absolute;
+      z-index: 4;
+      left: max(5vw, 48px);
+      bottom: clamp(48px, 8vh, 96px);
+      width: min(390px, calc(100% - 96px));
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: opacity 180ms ease, transform 180ms ease;
+      text-shadow: 0 2px 20px rgba(0,0,0,.75);
+    }
+    html.js-project-player .case.show-project-copy .caption {
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+    }
+    .project-detail-caption {
+      position: absolute;
+      z-index: 4;
+      left: max(6vw, 24px);
+      bottom: clamp(28px, 6vh, 72px);
+      color: #fff;
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      text-shadow: 0 2px 18px rgba(0,0,0,.9);
+      opacity: 0;
+      transition: opacity 150ms ease;
+    }
+    .project-detail-caption.is-visible { opacity: 1; }
+    .project-scene-count {
+      position: absolute;
+      z-index: 5;
+      right: max(22px, env(safe-area-inset-right));
+      bottom: max(24px, env(safe-area-inset-bottom));
+      color: rgba(255,255,255,.72);
+      font-size: .58rem;
+      font-weight: 500;
+      letter-spacing: .18em;
+    }
+    html.js-project-player .case .status { z-index: 5; }
+
+    @media (max-width: 820px) {
+      .project-scene img { object-fit: contain; }
+      .project-scene::after { background: linear-gradient(180deg, transparent 55%, rgba(7,4,8,.84)); }
+      html.js-project-player .case .caption { bottom: max(44px, calc(28px + env(safe-area-inset-bottom))); }
+      .project-detail-caption { bottom: max(42px, calc(26px + env(safe-area-inset-bottom))); }
+      .project-scene-count { bottom: max(18px, env(safe-area-inset-bottom)); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .intro { height: auto; min-height: 100svh; }
+      .intro-sticky {
+        position: relative;
+        min-height: 100svh;
+        background: #050403 url("media/poster_hero.jpg") center / cover no-repeat;
+      }
+      .intro-sticky video, .vision-copy, .scroll-cue, .hero-actions a[href="#visionCopy"] { display: none; }
+      .intro-copy { opacity: 1 !important; }
+      .drop, .ground, .caption, .frames figure { opacity: 1 !important; transform: none !important; }
+      .project-scene img { transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <span id="top" aria-hidden="true"></span>
+  <a class="skip-link" href="#work" data-i18n="skip">Skip to selected work</a>
+  <div class="page-progress" id="pageProgress" aria-hidden="true"></div>
+  <div class="site-brand">TEMİZ STUDIO</div>
+  <button class="lang-switch" id="langSwitch" type="button" aria-label="Türkçe diline geç"><span data-lang-option="en" aria-current="true">EN</span><span aria-hidden="true">/</span><span data-lang-option="tr" aria-current="false">TR</span></button>
+  <a class="work-link" href="#work" data-i18n="viewWork">View work</a>
+
+  <header class="intro" id="top">
+    <div class="intro-sticky">
+      <video id="introVideo" muted playsinline preload="auto" poster="media/poster_hero.jpg" aria-hidden="true" tabindex="-1">
+        <source src="scene_1_kling25_correct_landscape_seek.mp4" type="video/mp4">
+      </video>
+
+      <div class="intro-copy hero-copy" id="heroCopy">
+        <p class="eyebrow" data-i18n="role">Spatial &amp; Brand Experience Designer</p>
+        <h1 class="display" data-i18n="heroTitle">I shape brand ideas into spaces people can enter, move through and remember.</h1>
+        <p class="lead" data-i18n="heroLead">Concept, flow, material, light and visual communication — developed as one coherent experience.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#work" data-i18n="viewSelected">View selected work</a>
+          <a class="button" href="#visionCopy" data-i18n="enterStory">Enter the story</a>
+        </div>
+      </div>
+
+      <div class="intro-copy vision-copy" id="visionCopy">
+        <p class="eyebrow" data-i18n="pointOfView">01 — Point of view</p>
+        <h2 class="display" data-i18n="vision">Vision</h2>
+        <p class="lead" data-i18n="visionLead">Before a space is drawn, it must know what it wants people to feel.</p>
+      </div>
+      <div class="scroll-cue" data-i18n="scrollCue">Scroll to shape the story</div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="chapter" id="work">
+      <p class="eyebrow" data-i18n="selectedWork">02 — Selected work</p>
+      <h2 class="display" data-i18n="workTitle">A brand idea, brought to the floor.</h2>
+      <p data-i18n="workLead">Selected work across events, exhibitions, brand experiences and interiors.</p>
+    </section>
+
+    <article class="case gratis-case" id="project-gratis">
+      <section class="act gratis-act">
+        <div class="stage"><div class="drop">
+          <img src="gratis_final/desktop/scene_121.jpg" srcset="gratis_final/mobile/scene_121.webp 1280w, gratis_final/desktop/scene_121.jpg 2048w" sizes="100vw" alt="Keyhole entrance — follow the purple rabbit" width="2048" height="1289" loading="eager" decoding="async">
+          <span class="status" data-i18n="revisited">Revisited concept · 2026</span>
+        </div></div>
+        <div class="caption">
+          <p class="index">01 / 10</p>
+          <p class="project-kicker" data-i18n="gratisKicker">Gratis</p>
+          <h3 class="display" data-i18n="gratisTitle">Harikalar Diyarı</h3>
+          <p class="category" data-i18n="gratisSubtitle">Immersive event design · Brand experience</p>
+          <p class="idea" data-i18n="gratisIdea">A Wonderland-inspired journey that moves visitors from arrival and discovery to workshops and the main stage.</p>
+        </div>
+      </section>
+      <section class="gratis-journey">
+        <h4 class="gratis-journey-title" data-i18n="gratisGallery">Gratis — a journey through the brand world</h4>
+        <div class="frames">
+          <figure><img src="gratis_final/desktop/scene_122.jpg" srcset="gratis_final/mobile/scene_122.webp 1280w, gratis_final/desktop/scene_122.jpg 2048w" sizes="100vw" alt="Gratis Harikalar Diyarı ticket and welcome area" width="2048" height="1289" loading="lazy" decoding="async"><figcaption data-i18n="gWelcome">Entrance · welcome and ticketing</figcaption></figure>
+          <figure><img src="gratis_final/desktop/scene_126.jpg" srcset="gratis_final/mobile/scene_126.webp 1280w, gratis_final/desktop/scene_126.jpg 2048w" sizes="100vw" alt="Gratis ticket booth framed by red mushrooms" width="2048" height="1289" loading="lazy" decoding="async"><figcaption data-i18n="gTicket">Arrival · ticket booth</figcaption></figure>
+          <figure><img src="gratis_final/desktop/scene_135.jpg" srcset="gratis_final/mobile/scene_135.webp 1280w, gratis_final/desktop/scene_135.jpg 2048w" sizes="100vw" alt="Oversized house of cards installation" width="2048" height="1289" loading="lazy" decoding="async"><figcaption data-i18n="gCard">Discovery · house of cards</figcaption></figure>
+          <figure><img src="gratis_final/desktop/scene_131.jpg" srcset="gratis_final/mobile/scene_131.webp 1280w, gratis_final/desktop/scene_131.jpg 2048w" sizes="100vw" alt="Workshop area with timber tables" width="2048" height="1289" loading="lazy" decoding="async"><figcaption data-i18n="gWorkshop">Participation · workshop</figcaption></figure>
+          <figure><img src="gratis_final/desktop/scene_128.jpg" srcset="gratis_final/mobile/scene_128.webp 1280w, gratis_final/desktop/scene_128.jpg 2048w" sizes="100vw" alt="Book corner within the Gratis Wonderland environment" width="2048" height="1289" loading="lazy" decoding="async"><figcaption data-i18n="gBook">Discovery · book corner</figcaption></figure>
+          <figure><img src="gratis_final/desktop/scene_130.jpg" srcset="gratis_final/mobile/scene_130.webp 1280w, gratis_final/desktop/scene_130.jpg 2048w" sizes="100vw" alt="White rabbit sculptures and mirrors" width="2048" height="1289" loading="lazy" decoding="async"><figcaption data-i18n="gRabbit">Character · white rabbit</figcaption></figure>
+        </div>
+      </section>
+    </article>
+
+    <article class="case" id="project-regnum">
+      <section class="act featured" data-featured>
+        <div class="stage">
+          <div class="ground" data-ground></div>
+          <div class="drop" data-drop>
+            <img src="selected_work_final/desktop/regnum_01_arrival.jpg" srcset="selected_work_final/mobile/regnum_01_arrival.webp 1280w, selected_work_final/desktop/regnum_01_arrival.jpg 2048w" sizes="100vw" alt="Regnum Carya Dubai exhibition stand, three-quarter arrival view" width="2048" height="1289" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="caption" data-caption>
+          <p class="index">02 / 10</p>
+          <p class="project-kicker">Regnum Carya · Dubai</p>
+          <h3 class="display">Life. Well Lived.</h3>
+          <p class="category">Exhibition stand · Hospitality and guest experience</p>
+          <p class="idea">Resort imagery, warm timber and integrated light come together in an open setting for meetings and conversation.</p>
+        </div>
+      </section>
+      <section class="frames-wrap" data-frames>
+        <h4 class="frames-title">Regnum Carya — spatial views</h4>
+        <div class="frames">
+          <figure><img src="selected_work_final/desktop/regnum_02_front.jpg" srcset="selected_work_final/mobile/regnum_02_front.webp 1280w, selected_work_final/desktop/regnum_02_front.jpg 2048w" sizes="100vw" alt="Regnum Carya Dubai exhibition stand, front view" width="2048" height="1289" loading="lazy" decoding="async"><figcaption>Front view</figcaption></figure>
+          <figure><img src="selected_work_final/desktop/regnum_03_lounge.jpg" srcset="selected_work_final/mobile/regnum_03_lounge.webp 1280w, selected_work_final/desktop/regnum_03_lounge.jpg 2048w" sizes="100vw" alt="Regnum Carya Dubai lounge and meeting area" width="2048" height="1289" loading="lazy" decoding="async"><figcaption>Lounge and meeting area</figcaption></figure>
+          <figure><img src="selected_work_final/desktop/regnum_04_wide.jpg" srcset="selected_work_final/mobile/regnum_04_wide.webp 1280w, selected_work_final/desktop/regnum_04_wide.jpg 2048w" sizes="100vw" alt="Regnum Carya Dubai exhibition stand, wide view" width="2048" height="1298" loading="lazy" decoding="async"><figcaption>Wide stand view</figcaption></figure>
+        </div>
+      </section>
+    </article>
+
+    <article class="case" id="project-wynn">
+      <section class="act featured" data-featured>
+        <div class="stage">
+          <div class="ground" data-ground></div>
+          <div class="drop" data-drop>
+            <img src="selected_work_final/desktop/wynn_01_hero_front.jpg" srcset="selected_work_final/mobile/wynn_01_hero_front.webp 1280w, selected_work_final/desktop/wynn_01_hero_front.jpg 2048w" sizes="100vw" alt="Wynn Al Marjan Island Delilah two-storey exhibition stand, front view" width="2048" height="1578" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="caption" data-caption>
+          <p class="index">03 / 10</p>
+          <p class="project-kicker">Wynn · Al Marjan Island</p>
+          <h3 class="display">Delilah</h3>
+          <p class="category">Two-storey exhibition stand · Restaurant experience</p>
+          <p class="idea">A restaurant identity, standing on its own in the dark.</p>
+        </div>
+      </section>
+      <section class="frames-wrap" data-frames>
+        <h4 class="frames-title">Wynn — spatial details</h4>
+        <div class="frames">
+          <figure><img src="selected_work_final/desktop/wynn_02_object_34.jpg" srcset="selected_work_final/mobile/wynn_02_object_34.webp 1280w, selected_work_final/desktop/wynn_02_object_34.jpg 2048w" sizes="100vw" alt="Wynn Delilah stand, three-quarter view" width="2048" height="1289" loading="lazy" decoding="async"><figcaption>Full volume · three-quarter</figcaption></figure>
+          <figure><img src="selected_work_final/desktop/wynn_03_delilah_neon.jpg" srcset="selected_work_final/mobile/wynn_03_delilah_neon.webp 1280w, selected_work_final/desktop/wynn_03_delilah_neon.jpg 2048w" sizes="100vw" alt="Delilah neon reception detail" width="2048" height="1578" loading="lazy" decoding="async"><figcaption>Identity · reception</figcaption></figure>
+          <figure><img src="selected_work_final/desktop/wynn_04_dining.jpg" srcset="selected_work_final/mobile/wynn_04_dining.webp 1280w, selected_work_final/desktop/wynn_04_dining.jpg 2048w" sizes="100vw" alt="Wynn dining atmosphere" width="2048" height="1578" loading="lazy" decoding="async"><figcaption>Dining · atmosphere</figcaption></figure>
+          <figure><img src="selected_work_final/desktop/wynn_05_conference.jpg" srcset="selected_work_final/mobile/wynn_05_conference.webp 1280w, selected_work_final/desktop/wynn_05_conference.jpg 2048w" sizes="100vw" alt="Wynn conference room with integrated architectural lighting" width="2048" height="1578" loading="lazy" decoding="async"><figcaption>Conference room · integrated light</figcaption></figure>
+          <figure><img src="selected_work_final/desktop/wynn_06_lounge.jpg" srcset="selected_work_final/mobile/wynn_06_lounge.webp 1280w, selected_work_final/desktop/wynn_06_lounge.jpg 2048w" sizes="100vw" alt="Wynn lounge with sculptural pendant lighting" width="2048" height="1578" loading="lazy" decoding="async"><figcaption>Lounge · sculptural lighting</figcaption></figure>
+          <figure><img src="selected_work_final/desktop/wynn_07_exterior_alt.jpg" srcset="selected_work_final/mobile/wynn_07_exterior_alt.webp 1280w, selected_work_final/desktop/wynn_07_exterior_alt.jpg 2048w" sizes="100vw" alt="Wynn Delilah two-storey exhibition stand, alternate exterior view" width="2048" height="1578" loading="lazy" decoding="async"><figcaption>Two-storey stand · alternate view</figcaption></figure>
+        </div>
+      </section>
+    </article>
+
+    <article class="case" id="project-masterclass">
+      <section class="act featured" data-featured>
+        <div class="stage"><div class="ground" data-ground></div><div class="drop" data-drop>
+          <img src="selected_work_final/desktop/masterclass_01_stage_34.jpg" srcset="selected_work_final/mobile/masterclass_01_stage_34.webp 1280w, selected_work_final/desktop/masterclass_01_stage_34.jpg 2048w" sizes="100vw" alt="Romeu Felipe Masterclass stage, three-quarter view" width="2048" height="1578" loading="lazy" decoding="async">
+        </div></div>
+        <div class="caption" data-caption><p class="index">04 / 10</p><p class="project-kicker">Romeu Felipe</p><h3 class="display">Masterclass</h3><p class="category">Event stage · Education and brand presentation</p><p class="idea">Marble, gold and controlled light give the masterclass a focused, confident stage identity.</p></div>
+      </section>
+      <section class="frames-wrap" data-frames><h4 class="frames-title">Masterclass — spatial details</h4><div class="frames">
+        <figure><img src="selected_work_final/desktop/masterclass_02_gold_wall.jpg" srcset="selected_work_final/mobile/masterclass_02_gold_wall.webp 1280w, selected_work_final/desktop/masterclass_02_gold_wall.jpg 2048w" sizes="100vw" alt="Backlit gold feature wall" width="2048" height="1143" loading="lazy" decoding="async"><figcaption>Brand wall · backlit</figcaption></figure>
+        <figure><img src="selected_work_final/desktop/masterclass_03_front_hero.jpg" srcset="selected_work_final/mobile/masterclass_03_front_hero.webp 1280w, selected_work_final/desktop/masterclass_03_front_hero.jpg 2048w" sizes="100vw" alt="Masterclass stage viewed from audience seating" width="2048" height="1143" loading="lazy" decoding="async"><figcaption>Stage · audience view</figcaption></figure>
+      </div></section>
+    </article>
+
+    <article class="case" id="project-stadium">
+      <section class="act featured" data-featured>
+        <div class="stage"><div class="ground" data-ground></div><div class="drop" data-drop>
+          <img src="selected_work_final/desktop/stadium_01_hero.jpg" srcset="selected_work_final/mobile/stadium_01_hero.webp 1280w, selected_work_final/desktop/stadium_01_hero.jpg 2048w" sizes="100vw" alt="Matchday fan activation booth outside a stadium" width="2048" height="1130" loading="lazy" decoding="async">
+        </div></div>
+        <div class="caption" data-caption><p class="index">05 / 10</p><p class="project-kicker">arsaVev · Matchday</p><h3 class="display">Fan Experience</h3><p class="category">Sports activation · Participation and play</p><p class="idea">A compact matchday environment that turns club identity into quizzes, play and shared fan moments.</p></div>
+      </section>
+      <section class="frames-wrap" data-frames><h4 class="frames-title">Matchday — interaction details</h4><div class="frames">
+        <figure><img src="selected_work_final/desktop/stadium_04_photoreal.jpg" srcset="selected_work_final/mobile/stadium_04_photoreal.webp 1280w, selected_work_final/desktop/stadium_04_photoreal.jpg 2048w" sizes="100vw" alt="Photoreal presentation view of the fan booth" width="2048" height="1130" loading="lazy" decoding="async"><figcaption>Presentation · enhanced view</figcaption></figure>
+        <figure><img src="selected_work_final/desktop/stadium_02_crest_pitch.jpg" srcset="selected_work_final/mobile/stadium_02_crest_pitch.webp 1280w, selected_work_final/desktop/stadium_02_crest_pitch.jpg 2048w" sizes="100vw" alt="Crest-shaped booth and mini pitch" width="2048" height="1130" loading="lazy" decoding="async"><figcaption>Crest · mini pitch</figcaption></figure>
+        <figure><img src="selected_work_final/desktop/stadium_03_entrance.jpg" srcset="selected_work_final/mobile/stadium_03_entrance.webp 1280w, selected_work_final/desktop/stadium_03_entrance.jpg 2048w" sizes="100vw" alt="Fan booth entrance and quiz area" width="2048" height="1130" loading="lazy" decoding="async"><figcaption>Entrance · quiz</figcaption></figure>
+      </div></section>
+    </article>
+
+    <article class="case" id="project-tio">
+      <section class="act restrained" data-restrained>
+        <div class="stage"><div class="drop"><img src="selected_work_final/desktop/tio_01_hero.jpg" srcset="selected_work_final/mobile/tio_01_hero.webp 1280w, selected_work_final/desktop/tio_01_hero.jpg 2048w" sizes="100vw" alt="TIO Logistics exhibition stand, front view" width="2048" height="1143" loading="lazy" decoding="async"></div></div>
+        <div class="caption"><p class="index">06 / 10</p><p class="project-kicker">TIO Logistics</p><h3 class="display">The Chemistry of Logistics</h3><p class="category">Exhibition stand · Corporate brand experience</p><p class="idea">Black volumes, a precise red line and product displays translate an industrial brand into a clear exhibition system.</p></div>
+      </section>
+      <section class="frames-wrap" data-frames><h4 class="frames-title">TIO — material and brand</h4><div class="frames">
+        <figure><img src="selected_work_final/desktop/tio_02_logo_wall.jpg" srcset="selected_work_final/mobile/tio_02_logo_wall.webp 1280w, selected_work_final/desktop/tio_02_logo_wall.jpg 2048w" sizes="100vw" alt="TIO Logistics logo wall" width="2048" height="1143" loading="lazy" decoding="async"><figcaption>Identity · wall</figcaption></figure>
+        <figure><img src="selected_work_final/desktop/tio_03_product.jpg" srcset="selected_work_final/mobile/tio_03_product.webp 1280w, selected_work_final/desktop/tio_03_product.jpg 2048w" sizes="100vw" alt="TIO Logistics exhibition product zone" width="2048" height="1143" loading="lazy" decoding="async"><figcaption>Product · display</figcaption></figure>
+        <figure><img src="selected_work_final/desktop/tio_04_lounge.jpg" srcset="selected_work_final/mobile/tio_04_lounge.webp 1280w, selected_work_final/desktop/tio_04_lounge.jpg 2048w" sizes="100vw" alt="TIO Logistics lounge interior" width="2048" height="1143" loading="lazy" decoding="async"><figcaption>Lounge · interior</figcaption></figure>
+      </div></section>
+    </article>
+
+    <article class="case" id="project-nissan">
+      <section class="act restrained" data-restrained>
+        <div class="stage"><div class="drop"><img src="selected_work_final/desktop/nissan_01_hero.jpg" srcset="selected_work_final/mobile/nissan_01_hero.webp 1280w, selected_work_final/desktop/nissan_01_hero.jpg 2048w" sizes="100vw" alt="Nissan and Big Chefs automotive brand activation arch" width="2048" height="1289" loading="lazy" decoding="async"></div></div>
+        <div class="caption"><p class="index">07 / 10</p><p class="project-kicker">Nissan × Big Chefs</p><h3 class="display">The Arch</h3><p class="category">Automotive activation · Product focus</p><p class="idea">One bold arch frames the vehicle and gives the collaboration a recognizable arrival point.</p></div>
+      </section>
+    </article>
+
+    <article class="case" id="project-kanal7">
+      <section class="act restrained" data-restrained>
+        <div class="stage"><div class="drop"><img src="selected_work_final/desktop/kanal_01_hero.jpg" srcset="selected_work_final/mobile/kanal_01_hero.webp 1280w, selected_work_final/desktop/kanal_01_hero.jpg 2048w" sizes="100vw" alt="Kanal 7 anniversary event stage" width="2048" height="1143" loading="lazy" decoding="async"></div></div>
+        <div class="caption"><p class="index">08 / 10</p><p class="project-kicker">Kanal 7</p><h3 class="display">30th Anniversary</h3><p class="category">Anniversary event · Stage and guest journey</p><p class="idea">A connected event language carries the anniversary identity from the entrance to the main stage.</p></div>
+      </section>
+      <section class="frames-wrap" data-frames><h4 class="frames-title">Anniversary — event sequence</h4><div class="frames">
+        <figure><img src="selected_work_final/desktop/kanal_02_logo.jpg" srcset="selected_work_final/mobile/kanal_02_logo.webp 1280w, selected_work_final/desktop/kanal_02_logo.jpg 2048w" sizes="100vw" alt="Kanal 7 anniversary identity detail" width="2048" height="1143" loading="lazy" decoding="async"><figcaption>Identity · detail</figcaption></figure>
+        <figure><img src="selected_work_final/desktop/kanal_03_wide.jpg" srcset="selected_work_final/mobile/kanal_03_wide.webp 1280w, selected_work_final/desktop/kanal_03_wide.jpg 2048w" sizes="100vw" alt="Wide view of the Kanal 7 anniversary environment" width="2048" height="1143" loading="lazy" decoding="async"><figcaption>Environment · wide</figcaption></figure>
+      </div></section>
+    </article>
+
+    <article class="case" id="project-artas">
+      <section class="act restrained" data-restrained>
+        <div class="stage"><div class="drop"><img src="selected_work_final/desktop/artas_01_hero.jpg" srcset="selected_work_final/mobile/artas_01_hero.webp 1280w, selected_work_final/desktop/artas_01_hero.jpg 2048w" sizes="100vw" alt="Artaş Hotels Group two-storey exhibition stand" width="2048" height="1143" loading="lazy" decoding="async"></div></div>
+        <div class="caption"><p class="index">09 / 10</p><p class="project-kicker">Artaş Hotels Group</p><h3 class="display">Two-Storey Stand</h3><p class="category">Exhibition stand · Hotel brand presentation</p><p class="idea">Timber, planting and soft light create a composed setting for meetings, presentation and guest interaction.</p></div>
+      </section>
+      <section class="frames-wrap" data-frames><h4 class="frames-title">Artaş — volume and interior</h4><div class="frames">
+        <figure><img src="selected_work_final/desktop/artas_02_front.jpg" srcset="selected_work_final/mobile/artas_02_front.webp 1280w, selected_work_final/desktop/artas_02_front.jpg 2048w" sizes="100vw" alt="Artaş Hotels exhibition stand, front view" width="2048" height="1143" loading="lazy" decoding="async"><figcaption>Volume · front</figcaption></figure>
+        <figure><img src="selected_work_final/desktop/artas_03_interior.jpg" srcset="selected_work_final/mobile/artas_03_interior.webp 1280w, selected_work_final/desktop/artas_03_interior.jpg 2048w" sizes="100vw" alt="Artaş Hotels stand interior" width="2048" height="1143" loading="lazy" decoding="async"><figcaption>Meeting · interior</figcaption></figure>
+      </div></section>
+    </article>
+
+    <article class="case" id="project-dum">
+      <section class="act restrained" data-restrained>
+        <div class="stage"><div class="drop"><img src="selected_work_final/desktop/dum_01_hero.jpg" srcset="selected_work_final/mobile/dum_01_hero.webp 1280w, selected_work_final/desktop/dum_01_hero.jpg 2048w" sizes="100vw" alt="DUM workplace executive interior with geometric ceiling lighting" width="2048" height="1152" loading="lazy" decoding="async"></div></div>
+        <div class="caption"><p class="index">10 / 10</p><p class="project-kicker">DUM</p><h3 class="display">Workspace</h3><p class="category">Office interior · Workplace design</p><p class="idea">Colour, geometric lighting and contrasting rooms give the workplace a clear rhythm and identity.</p></div>
+      </section>
+      <section class="frames-wrap" data-frames><h4 class="frames-title">DUM — workplace sequence</h4><div class="frames">
+        <figure><img src="selected_work_final/desktop/dum_02_meeting.jpg" srcset="selected_work_final/mobile/dum_02_meeting.webp 1280w, selected_work_final/desktop/dum_02_meeting.jpg 2048w" sizes="100vw" alt="DUM blue meeting room with geometric ceiling lighting" width="2048" height="1152" loading="lazy" decoding="async"><figcaption>Meeting room · blue</figcaption></figure>
+        <figure><img src="selected_work_final/desktop/dum_03_open.jpg" srcset="selected_work_final/mobile/dum_03_open.webp 1280w, selected_work_final/desktop/dum_03_open.jpg 2048w" sizes="100vw" alt="DUM red open-plan office interior" width="2048" height="1152" loading="lazy" decoding="async"><figcaption>Open plan · red</figcaption></figure>
+      </div></section>
+    </article>
+
+    <section class="method" id="method">
+      <p class="eyebrow" data-i18n="methodTitle">03 — From idea to space</p>
+      <p data-i18n-html="methodLead">From the first idea to the final atmosphere, I shape <strong>concept, flow, material, light and presentation</strong> as one system.</p>
+      <div class="method-tags"><span data-i18n="tagConcept">Concept</span><span data-i18n="tagFlow">Flow</span><span data-i18n="tagMaterial">Material</span><span data-i18n="tagLight">Light</span><span data-i18n="tagVisualisation">Visualisation</span><span data-i18n="tagMotion">Motion</span></div>
+    </section>
+
+    <section class="system" id="system" aria-labelledby="systemHeading">
+      <div class="system-head">
+        <p class="eyebrow" data-i18n="systemTitle">04 — Studio system</p>
+        <h2 class="display" id="systemHeading" data-i18n="systemHeadline">A studio that runs on its own AI agents.</h2>
+        <p data-i18n="systemLead">Behind the work is Hermes, an agent operating system I built for the studio. It runs on Claude and local models, and takes on the repeatable parts of production so the design time goes where it matters.</p>
+      </div>
+      <ol class="system-list">
+        <li><span class="num">01</span><h3 data-i18n="sys1Title">Research and brief</h3><p data-i18n="sys1Text">Agents collect references, brand material and venue information, then turn them into a structured brief with sources.</p></li>
+        <li><span class="num">02</span><h3 data-i18n="sys2Title">Visual exploration</h3><p data-i18n="sys2Text">Early mood and concept variations are generated and compared quickly, before any 3D modelling starts.</p></li>
+        <li><span class="num">03</span><h3 data-i18n="sys3Title">Production tracking</h3><p data-i18n="sys3Text">Render queues, revisions and deliveries are tracked by the system, with every decision and file kept as evidence.</p></li>
+        <li><span class="num">04</span><h3 data-i18n="sys4Title">Code and tools</h3><p data-i18n="sys4Text">The same agents write the studio’s own tools: this website, presentation pages and production automations.</p></li>
+      </ol>
+      <p class="system-note" data-i18n="systemNote">Agents speed up the work. Concept, space and light are still decided by a designer.</p>
+    </section>
+
+    <section class="contact" id="contact">
+      <p class="eyebrow" data-i18n="contactTitle">05 — Contact</p>
+      <h2 class="display" data-i18n="contactHeadline">Let’s turn your next brand idea into a space people remember.</h2>
+      <p data-i18n="contactNote">Available for event, exhibition and brand experience collaborations.</p>
+      <div class="contact-actions">
+        <a class="button primary" href="mailto:suleyman@tmzstudios.com" data-i18n="startConversation">Start a conversation</a>
+        <div class="social-links" aria-label="Social links">
+          <a class="button social" id="whatsappLink" href="https://wa.me/905445092509?text=Hello%20S%C3%BCleyman%2C%20I%20reviewed%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <a class="button social" href="https://www.instagram.com/suleymantemiz0/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
+      </div>
+      <p><a class="button" href="#top" data-scroll-top data-i18n="backTop">Back to the beginning</a></p>
+      <p class="footer" data-i18n="footer">TEMİZ STUDIO · Spatial &amp; Brand Experience Design · 2026</p>
+    </section>
+  </main>
+
+  <noscript><style>.intro-sticky video{display:none}.intro{height:auto}.intro-sticky{position:relative;min-height:100svh;background:#050403 url("media/poster_hero.jpg") center/cover no-repeat}.vision-copy,.scroll-cue{display:none}</style></noscript>
+  <script src="lib/gsap.min.js"></script>
+  <script src="lib/ScrollTrigger.min.js"></script>
+  <script>
+    (() => {
+      const translations = {
+        en: {
+          skip:'Skip to selected work', viewWork:'View work', role:'Spatial & Brand Experience Designer', heroTitle:'I shape brand ideas into spaces people can enter, move through and remember.', heroLead:'Concept, flow, material, light and visual communication — developed as one coherent experience.', viewSelected:'View selected work', enterStory:'Enter the story', pointOfView:'01 — Point of view', vision:'Vision', visionLead:'Before a space is drawn, it must know what it wants people to feel.', scrollCue:'Scroll to shape the story', selectedWork:'02 — Selected work', workTitle:'A brand idea, brought to the floor.', workLead:'Selected work across events, exhibitions, brand experiences and interiors.', revisited:'Revisited concept · 2026', gratisKicker:'Gratis', gratisTitle:'Harikalar Diyarı', gratisSubtitle:'Immersive event design · Brand experience', gratisIdea:'A Wonderland-inspired journey that moves visitors from arrival and discovery to workshops and the main stage.', gratisGallery:'Gratis — a journey through the brand world', gCard:'Discovery landmark · house of cards', gWelcome:'Entrance · welcome and ticketing', gTicket:'Arrival · ticket booth', gKeyhole:'Transition · follow the white rabbit', gWorkshop:'Participation · workshop', gBook:'Discovery · book corner', gRabbit:'Character · white rabbit', tagConcept:'Concept', tagFlow:'Flow', tagMaterial:'Material', tagLight:'Light', tagVisualisation:'Visualisation', tagMotion:'Motion', methodTitle:'03 — From idea to space', methodLead:'From the first idea to the final atmosphere, I shape <strong>concept, flow, material, light and presentation</strong> as one system.', contactTitle:'05 — Contact', contactHeadline:'Let’s turn your next brand idea into a space people remember.', contactNote:'Available for event, exhibition and brand experience collaborations.', startConversation:'Start a conversation', backTop:'Back to the beginning', footer:'TEMİZ STUDIO · Spatial & Brand Experience Design · 2026', systemTitle:'04 — Studio system', systemHeadline:'A studio that runs on its own AI agents.', systemLead:'Behind the work is Hermes, an agent operating system I built for the studio. It runs on Claude and local models, and takes on the repeatable parts of production so the design time goes where it matters.', sys1Title:'Research and brief', sys1Text:'Agents collect references, brand material and venue information, then turn them into a structured brief with sources.', sys2Title:'Visual exploration', sys2Text:'Early mood and concept variations are generated and compared quickly, before any 3D modelling starts.', sys3Title:'Production tracking', sys3Text:'Render queues, revisions and deliveries are tracked by the system, with every decision and file kept as evidence.', sys4Title:'Code and tools', sys4Text:'The same agents write the studio’s own tools: this website, presentation pages and production automations.', systemNote:'Agents speed up the work. Concept, space and light are still decided by a designer.'
+        },
+        tr: {
+          skip:'Seçili işlere geç', viewWork:'İşleri gör', role:'Mekansal & Marka Deneyimi Tasarımcısı', heroTitle:'Marka fikirlerini insanların içine girdiği, dolaştığı ve hatırladığı mekanlara dönüştürüyorum.', heroLead:'Konsept, akış, malzeme, ışık ve görsel iletişimi tek bir deneyim olarak kurguluyorum.', viewSelected:'Seçili işleri gör', enterStory:'Hikayeye gir', pointOfView:'01 — Bakış açısı', vision:'Vizyon', visionLead:'Bir mekan çizilmeden önce, insanlara ne hissettireceğini bilmelidir.', scrollCue:'Hikayeyi şekillendirmek için kaydır', selectedWork:'02 — Seçili işler', workTitle:'Marka fikri, mekana dönüştüğünde.', workLead:'Etkinlik, fuar, marka deneyimi ve iç mekanlardan seçili projeler.', revisited:'Yeniden yorumlanan konsept · 2026', gratisKicker:'Gratis', gratisTitle:'Harikalar Diyarı', gratisSubtitle:'Deneyim odaklı etkinlik tasarımı · Marka dünyası', gratisIdea:'Ziyaretçiyi karşılamadan keşfe, atölyelerden ana sahneye taşıyan Harikalar Diyarı temalı bir etkinlik deneyimi.', gratisGallery:'Gratis — marka dünyasında bir yolculuk', gCard:'Keşif odağı · iskambil kulesi', gWelcome:'Giriş · karşılama ve bilet', gTicket:'Karşılama · bilet alanı', gKeyhole:'Geçiş · beyaz tavşanı takip et', gWorkshop:'Katılım · atölye', gBook:'Keşif · kitap köşesi', gRabbit:'Karakter · beyaz tavşan', tagConcept:'Konsept', tagFlow:'Akış', tagMaterial:'Malzeme', tagLight:'Işık', tagVisualisation:'Görselleştirme', tagMotion:'Hareket', methodTitle:'03 — Fikirden mekana', methodLead:'İlk fikirden son atmosfere kadar <strong>konsepti, akışı, malzemeyi, ışığı ve sunumu</strong> tek bir sistem olarak kurguluyorum.', contactTitle:'05 — İletişim', contactHeadline:'Bir sonraki marka fikrinizi insanların hatırlayacağı bir mekana dönüştürelim.', contactNote:'Etkinlik, fuar ve marka deneyimi projeleri için iletişime geçebilirsiniz.', startConversation:'İletişime geç', backTop:'Başa dön', footer:'TEMİZ STUDIO · Mekansal & Marka Deneyimi Tasarımı · 2026', systemTitle:'04 — Stüdyo sistemi', systemHeadline:'Kendi yapay zekâ ajanlarıyla çalışan bir stüdyo.', systemLead:'İşlerin arkasında stüdyo için kurduğum Hermes adlı ajan işletim sistemi var. Claude ve yerel modellerle çalışıyor; üretimin tekrar eden kısmını üstleniyor, tasarım zamanı asıl gereken yere kalıyor.', sys1Title:'Araştırma ve brief', sys1Text:'Ajanlar referansları, marka malzemesini ve mekân bilgisini toplar; kaynaklarıyla birlikte düzenli bir brief çıkarır.', sys2Title:'Görsel keşif', sys2Text:'İlk atmosfer ve konsept varyasyonları 3D modellemeye başlamadan hızlıca üretilip karşılaştırılır.', sys3Title:'Üretim takibi', sys3Text:'Render kuyruğu, revizyonlar ve teslimler sistemde izlenir; her karar ve dosya kanıtıyla saklanır.', sys4Title:'Kod ve araçlar', sys4Text:'Aynı ajanlar stüdyonun kendi araçlarını da yazar: bu site, sunum sayfaları ve üretim otomasyonları.', systemNote:'Ajanlar işi hızlandırır. Konsepti, mekânı ve ışığı yine bir tasarımcı belirler.'
+        }
+      };
+      const languageButton = document.getElementById('langSwitch');
+      const projectPlayers = [];
+      const projectCopy = {
+        en: {
+          'project-regnum':['Regnum Carya · Dubai','Life. Well Lived.','Exhibition stand · Hospitality and guest experience','Resort imagery, warm timber and integrated light come together in an open setting for meetings and conversation.','Regnum Carya — spatial views'],
+          'project-wynn':['Wynn · Al Marjan Island','Delilah','Two-storey exhibition stand · Restaurant experience','A restaurant identity, standing on its own in the dark.','Wynn — spatial details'],
+          'project-masterclass':['Romeu Felipe','Masterclass','Event stage · Education and brand presentation','Marble, gold and controlled light give the masterclass a focused, confident stage identity.','Masterclass — spatial details'],
+          'project-stadium':['arsaVev · Matchday','Fan Experience','Sports activation · Participation and play','A compact matchday environment that turns club identity into quizzes, play and shared fan moments.','Matchday — interaction details'],
+          'project-tio':['TIO Logistics','The Chemistry of Logistics','Exhibition stand · Corporate brand experience','Black volumes, a precise red line and product displays translate an industrial brand into a clear exhibition system.','TIO — material and brand'],
+          'project-nissan':['Nissan × Big Chefs','The Arch','Automotive activation · Product focus','One bold arch frames the vehicle and gives the collaboration a recognizable arrival point.','Nissan — activation details'],
+          'project-kanal7':['Kanal 7','30th Anniversary','Anniversary event · Stage and guest journey','A connected event language carries the anniversary identity from the entrance to the main stage.','Anniversary — event sequence'],
+          'project-artas':['Artaş Hotels Group','Two-Storey Stand','Exhibition stand · Hotel brand presentation','Timber, planting and soft light create a composed setting for meetings, presentation and guest interaction.','Artaş — volume and interior'],
+          'project-dum':['DUM','Workspace','Office interior · Workplace design','Colour, geometric lighting and contrasting rooms give the workplace a clear rhythm and identity.','DUM — workplace sequence']
+        },
+        tr: {
+          'project-regnum':['Regnum Carya · Dubai','Life. Well Lived.','Fuar standı · Otel ve misafir deneyimi','Resort görsellerini, sıcak ahşabı ve bütünleşik ışığı toplantı ve sohbet için açık bir fuar ortamında bir araya getiriyor.','Regnum Carya — mekansal görünüşler'],
+          'project-wynn':['Wynn · Al Marjan Island','Delilah','İki katlı fuar standı · Restoran deneyimi','Karanlığın içinde ışığı, malzemesi ve siluetiyle kendi kimliğini kuran iki katlı bir restoran deneyimi.','Wynn — mekansal detaylar'],
+          'project-masterclass':['Romeu Felipe','Masterclass','Etkinlik sahnesi · Eğitim ve marka sunumu','Mermer, altın ve kontrollü ışık; masterclass için odaklı ve güçlü bir sahne kimliği kuruyor.','Masterclass — mekansal detaylar'],
+          'project-stadium':['arsaVev · Maç Günü','Taraftar Deneyimi','Spor aktivasyonu · Katılım ve oyun','Kulüp kimliğini oyunlara, bilgi yarışmasına ve birlikte yaşanan maç günü anlarına dönüştüren kompakt bir taraftar alanı.','Maç günü — etkileşim detayları'],
+          'project-tio':['TIO Logistics','Lojistiğin Kimyası','Fuar standı · Kurumsal marka deneyimi','Siyah hacimler, net bir kırmızı çizgi ve ürün sergilemeleri; endüstriyel marka dilini güçlü bir fuar sistemine dönüştürüyor.','TIO — malzeme ve marka'],
+          'project-nissan':['Nissan × Big Chefs','Kemer','Otomotiv aktivasyonu · Ürün odağı','Tek ve güçlü bir kemer, aracı çerçeveliyor ve iş birliği için uzaktan tanınan bir buluşma noktası oluşturuyor.','Nissan — aktivasyon detayları'],
+          'project-kanal7':['Kanal 7','30. Yıl','Yıl dönümü etkinliği · Sahne ve konuk akışı','Yıl dönümü kimliğini girişten ana sahneye kadar taşıyan bütünlüklü bir etkinlik dili.','Yıl dönümü — etkinlik akışı'],
+          'project-artas':['Artaş Hotels Group','İki Katlı Stand','Fuar standı · Otel markası sunumu','Ahşap, bitkilendirme ve yumuşak ışık; toplantı, sunum ve misafir görüşmeleri için dengeli bir ortam kuruyor.','Artaş — hacim ve iç mekan'],
+          'project-dum':['DUM','Çalışma Alanları','Ofis iç mekanı · Çalışma alanı tasarımı','Renk, geometrik aydınlatma ve farklı karakterdeki odalar çalışma alanına net bir ritim ve kimlik kazandırıyor.','DUM — çalışma alanı akışı']
+        }
+      };
+      const detailCopy = {
+        en: {
+          'project-regnum':['Front view','Lounge and meeting area','Wide stand view'],
+          'project-wynn':['Full stand · three-quarter','Identity · reception','Dining · atmosphere','Conference room · integrated light','Lounge · sculptural lighting','Two-storey stand · alternate view'],
+          'project-masterclass':['Brand wall · backlit','Stage · audience view'],
+          'project-stadium':['Presentation · enhanced view','Crest · mini pitch','Entrance · quiz'],
+          'project-tio':['Identity · wall','Product · display','Lounge · interior'],
+          'project-nissan':[],
+          'project-kanal7':['Identity · detail','Environment · wide'],
+          'project-artas':['Stand · front','Meeting · interior'],
+          'project-dum':['Meeting room · blue','Open plan · red']
+        },
+        tr: {
+          'project-regnum':['Ön görünüş','Lounge ve toplantı alanı','Geniş stand görünüşü'],
+          'project-wynn':['Stand · üç çeyrek','Kimlik · karşılama','Yeme içme · atmosfer','Toplantı odası · bütünleşik ışık','Lounge · heykelsi aydınlatma','İki katlı stand · alternatif görünüş'],
+          'project-masterclass':['Marka duvarı · arkadan aydınlatma','Sahne · izleyici görünümü'],
+          'project-stadium':['Sunum · iyileştirilmiş görünüm','Arma · mini saha','Giriş · quiz'],
+          'project-tio':['Kimlik · duvar','Ürün · sergileme','Lounge · iç mekan'],
+          'project-nissan':[],
+          'project-kanal7':['Kimlik · detay','Mekan · geniş açı'],
+          'project-artas':['Stand · ön görünüş','Toplantı · iç mekan'],
+          'project-dum':['Toplantı odası · mavi','Açık ofis · kırmızı']
+        }
+      };
+      const trAltCopy = {
+        'Oversized house of cards installation':'Dev iskambil kartlarından kurulu yerleştirme',
+        'Gratis Harikalar Diyarı ticket and welcome area':'Gratis Harikalar Diyarı karşılama ve bilet alanı',
+        'Gratis ticket booth framed by red mushrooms':'Kırmızı mantarlarla çevrili Gratis bilet bankosu',
+        'Keyhole entrance and oversized playing cards':'Anahtar deliği girişi ve dev iskambil kartları',
+        'Workshop area with timber tables':'Ahşap masalı atölye alanı',
+        'Book corner within the Gratis Wonderland environment':'Gratis Harikalar Diyarı kitap köşesi',
+        'White rabbit sculptures and mirrors':'Beyaz tavşan heykelleri ve aynalar',
+        'Regnum Carya Dubai exhibition stand, three-quarter arrival view':'Regnum Carya Dubai fuar standı, üç çeyrek karşılama görünüşü',
+        'Regnum Carya Dubai exhibition stand, front view':'Regnum Carya Dubai fuar standı, ön görünüş',
+        'Regnum Carya Dubai lounge and meeting area':'Regnum Carya Dubai lounge ve toplantı alanı',
+        'Regnum Carya Dubai exhibition stand, wide view':'Regnum Carya Dubai fuar standı, geniş görünüş',
+        'Wynn Al Marjan Island Delilah two-storey exhibition stand, front view':'Wynn Al Marjan Island Delilah iki katlı fuar standı, ön görünüş',
+        'Wynn Delilah stand, three-quarter view':'Wynn Delilah standı, üç çeyrek görünüş',
+        'Delilah neon reception detail':'Delilah neon karşılama detayı',
+        'Wynn dining atmosphere':'Wynn yeme içme atmosferi',
+        'Wynn conference room with integrated architectural lighting':'Bütünleşik mimari aydınlatmalı Wynn toplantı odası',
+        'Wynn lounge with sculptural pendant lighting':'Heykelsi sarkıt aydınlatmalı Wynn lounge alanı',
+        'Wynn Delilah two-storey exhibition stand, alternate exterior view':'Wynn Delilah iki katlı fuar standı, alternatif dış görünüş',
+        'Romeu Felipe Masterclass stage, three-quarter view':'Romeu Felipe Masterclass sahnesi, üç çeyrek görünüş',
+        'Backlit gold feature wall':'Arkadan aydınlatmalı altın vurgu duvarı',
+        'Masterclass stage viewed from audience seating':'İzleyici oturumundan Masterclass sahnesi',
+        'Matchday fan activation booth outside a stadium':'Stadyum dışındaki maç günü taraftar aktivasyon standı',
+        'Photoreal presentation view of the fan booth':'Taraftar standının fotogerçekçi sunum görünüşü',
+        'Crest-shaped booth and mini pitch':'Arma biçimli stand ve mini saha',
+        'Fan booth entrance and quiz area':'Taraftar standı girişi ve quiz alanı',
+        'TIO Logistics exhibition stand, front view':'TIO Logistics fuar standı, ön görünüş',
+        'TIO Logistics logo wall':'TIO Logistics logo duvarı',
+        'TIO Logistics exhibition product zone':'TIO Logistics fuar ürün alanı',
+        'TIO Logistics lounge interior':'TIO Logistics lounge iç mekanı',
+        'Nissan and Big Chefs automotive brand activation arch':'Nissan ve Big Chefs otomotiv marka aktivasyon kemeri',
+        'Kanal 7 anniversary event stage':'Kanal 7 yıl dönümü etkinlik sahnesi',
+        'Kanal 7 anniversary identity detail':'Kanal 7 yıl dönümü kimlik detayı',
+        'Wide view of the Kanal 7 anniversary environment':'Kanal 7 yıl dönümü mekanının geniş görünüşü',
+        'Artaş Hotels Group two-storey exhibition stand':'Artaş Hotels Group iki katlı fuar standı',
+        'Artaş Hotels exhibition stand, front view':'Artaş Hotels fuar standı, ön görünüş',
+        'Artaş Hotels stand interior':'Artaş Hotels stand iç mekanı',
+        'DUM workplace executive interior with geometric ceiling lighting':'Geometrik tavan aydınlatmalı DUM yönetici çalışma alanı',
+        'DUM blue meeting room with geometric ceiling lighting':'Geometrik tavan aydınlatmalı DUM mavi toplantı odası',
+        'DUM red open-plan office interior':'DUM kırmızı açık ofis iç mekanı'
+      };
+      const applyLanguage = lang => {
+        const dict = translations[lang];
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-i18n]').forEach(el => { const value = dict[el.dataset.i18n]; if (value) el.textContent = value; });
+        document.querySelectorAll('[data-i18n-html]').forEach(el => { const value = dict[el.dataset.i18nHtml]; if (value) el.innerHTML = value; });
+        document.querySelectorAll('[data-lang-option]').forEach(el => el.setAttribute('aria-current', String(el.dataset.langOption === lang)));
+        Object.entries(projectCopy[lang]).forEach(([id, copy]) => {
+          const project = document.getElementById(id);
+          if (!project) return;
+          const kicker = project.querySelector('.project-kicker');
+          const title = project.querySelector('.caption h3');
+          const category = project.querySelector('.category');
+          const idea = project.querySelector('.idea');
+          const framesTitle = project.querySelector('.frames-title');
+          if (kicker) kicker.textContent = copy[0];
+          if (title) title.textContent = copy[1];
+          if (category) category.textContent = copy[2];
+          if (idea) idea.textContent = copy[3];
+          if (framesTitle) framesTitle.textContent = copy[4];
+        });
+        Object.entries(detailCopy[lang]).forEach(([id, labels]) => {
+          const captions = document.querySelectorAll(`#${id} .frames figcaption`);
+          captions.forEach((caption, index) => { if (labels[index]) caption.textContent = labels[index]; });
+        });
+        document.querySelectorAll('img[alt]').forEach(image => {
+          if (!image.dataset.altEn) image.dataset.altEn = image.alt;
+          image.alt = lang === 'tr' ? (trAltCopy[image.dataset.altEn] || image.dataset.altEn) : image.dataset.altEn;
+        });
+        projectPlayers.forEach(player => {
+          player.labelElements.forEach((element, index) => {
+            if (element) player.labels[index] = element.textContent.trim();
+          });
+          const currentLabel = player.labels[player.active] || '';
+          player.detailCaption.textContent = currentLabel;
+          player.detailCaption.classList.toggle('is-visible', player.active > 0 && Boolean(currentLabel));
+        });
+        languageButton.setAttribute('aria-label', lang === 'en' ? 'Türkçe diline geç' : 'Switch to English');
+        const whatsappLink = document.getElementById('whatsappLink');
+        if (whatsappLink) {
+          const whatsappMessage = lang === 'tr'
+            ? 'Merhaba Süleyman, portfolyonuzu inceledim ve bir proje hakkında konuşmak istiyorum.'
+            : 'Hello Süleyman, I reviewed your portfolio and would like to discuss a project.';
+          whatsappLink.href = `https://wa.me/905445092509?text=${encodeURIComponent(whatsappMessage)}`;
+        }
+        try { localStorage.setItem('temiz-language', lang); } catch (_) {}
+      };
+      let activeLanguage = 'en';
+      try {
+        const savedLanguage = localStorage.getItem('temiz-language') || localStorage.getItem('suleyman-language');
+        activeLanguage = savedLanguage === 'tr' ? 'tr' : 'en';
+      } catch (_) {}
+      applyLanguage(activeLanguage);
+      languageButton.addEventListener('click', () => { activeLanguage = activeLanguage === 'en' ? 'tr' : 'en'; applyLanguage(activeLanguage); });
+
+      document.querySelectorAll('.case').forEach(caseElement => {
+        const act = caseElement.querySelector('.act, .gratis-act');
+        const stage = act && act.querySelector('.stage');
+        const heroImage = stage && stage.querySelector('.drop img');
+        if (!act || !stage || !heroImage) return;
+
+        const status = stage.querySelector('.status');
+        const sceneEntries = [{ image: heroImage, label: '', caption: null }];
+        caseElement.querySelectorAll('.frames figure, .gratis-journey figure').forEach(figure => {
+          const image = figure.querySelector('img');
+          if (!image) return;
+          const caption = figure.querySelector('figcaption');
+          sceneEntries.push({ image, label: caption ? caption.textContent.trim() : '', caption });
+        });
+
+        const scenes = document.createElement('div');
+        scenes.className = 'project-scenes';
+        sceneEntries.forEach((entry, index) => {
+          const scene = document.createElement('div');
+          scene.className = `project-scene${index === 0 ? ' is-active' : ''}`;
+          scene.dataset.label = entry.label;
+          entry.image.loading = 'lazy';
+          entry.image.removeAttribute('fetchpriority');
+          entry.image.decoding = 'async';
+          scene.appendChild(entry.image);
+          scenes.appendChild(scene);
+        });
+
+        stage.querySelector('.drop')?.remove();
+        stage.querySelector('.ground')?.remove();
+        stage.appendChild(scenes);
+        if (status) stage.appendChild(status);
+
+        const detailCaption = document.createElement('div');
+        detailCaption.className = 'project-detail-caption';
+        const counter = document.createElement('div');
+        counter.className = 'project-scene-count';
+        counter.setAttribute('aria-hidden', 'true');
+        act.append(detailCaption, counter);
+
+        caseElement.style.setProperty('--scene-count', sceneEntries.length);
+        caseElement.classList.add('show-project-copy');
+        projectPlayers.push({
+          element: caseElement,
+          scenes: [...scenes.children],
+          labels: sceneEntries.map(entry => entry.label),
+          labelElements: sceneEntries.map(entry => entry.caption),
+          detailCaption,
+          counter,
+          warmed: new Set(),
+          active: 0
+        });
+      });
+      document.documentElement.classList.add('js-project-player');
+
+      const warmProjectImages = (player, index) => {
+        [index, Math.min(index + 1, player.scenes.length - 1)].forEach(sceneIndex => {
+          if (player.warmed.has(sceneIndex)) return;
+          player.warmed.add(sceneIndex);
+          player.scenes[sceneIndex].querySelector('img')?.decode?.().catch(() => {});
+        });
+      };
+      const setProjectScene = (player, index, shouldWarm = true) => {
+        if (player.active === index && player.counter.textContent) {
+          if (shouldWarm) warmProjectImages(player, index);
+          return;
+        }
+        player.active = index;
+        player.scenes.forEach((scene, sceneIndex) => {
+          const isActive = sceneIndex === index;
+          scene.classList.toggle('is-active', isActive);
+          if (isActive) {
+            scene.style.setProperty('--scene-drift', '0vh');
+            scene.style.setProperty('--scene-scale', '1.055');
+          }
+        });
+        player.element.classList.toggle('show-project-copy', index === 0);
+        player.detailCaption.textContent = player.labels[index] || '';
+        player.detailCaption.classList.toggle('is-visible', index > 0 && Boolean(player.labels[index]));
+        player.counter.textContent = `${String(index + 1).padStart(2, '0')} / ${String(player.scenes.length).padStart(2, '0')}`;
+        if (shouldWarm) warmProjectImages(player, index);
+      };
+
+      let projectTicking = false;
+      const smoothProjectStep = (start, end, value) => {
+        const x = Math.min(1, Math.max(0, (value - start) / (end - start)));
+        return x * x * (3 - 2 * x);
+      };
+      const smootherProjectStep = (start, end, value) => {
+        const x = Math.min(1, Math.max(0, (value - start) / (end - start)));
+        return x * x * x * (x * (x * 6 - 15) + 10);
+      };
+      const updateProjects = () => {
+        projectTicking = false;
+        projectPlayers.forEach(player => {
+          const rect = player.element.getBoundingClientRect();
+          if (rect.bottom < -innerHeight || rect.top > innerHeight * 2) return;
+          const progress = Math.max(0, -rect.top / Math.max(1, innerHeight));
+          const index = Math.min(player.scenes.length - 1, Math.floor(progress + .001));
+          const sceneProgress = Math.min(1, Math.max(0, progress - index));
+          const pull = smoothProjectStep(0, .30, sceneProgress);
+          const release = smootherProjectStep(.30, 1, sceneProgress);
+          const drift = -(.55 * pull + 8.45 * release);
+          const scale = 1.055 + .010 * pull - .015 * release;
+          setProjectScene(player, index);
+          player.scenes[index].style.setProperty('--scene-drift', `${drift.toFixed(3)}vh`);
+          player.scenes[index].style.setProperty('--scene-scale', scale.toFixed(4));
+        });
+      };
+      const requestProjectUpdate = () => {
+        if (projectTicking) return;
+        projectTicking = true;
+        requestAnimationFrame(updateProjects);
+      };
+      addEventListener('scroll', requestProjectUpdate, { passive: true });
+      addEventListener('resize', requestProjectUpdate, { passive: true });
+      projectPlayers.forEach(player => setProjectScene(player, 0, false));
+      requestProjectUpdate();
+
+      const progress = document.getElementById('pageProgress');
+      const updateProgress = () => {
+        const max = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+        progress.style.transform = `scaleX(${Math.min(1, Math.max(0, scrollY / max))})`;
+      };
+      addEventListener('scroll', updateProgress, { passive: true });
+      addEventListener('resize', updateProgress, { passive: true });
+      updateProgress();
+
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const touchLayout = document.documentElement.dataset.mobileStandalone === 'true' || matchMedia('(max-width: 820px)').matches;
+      const video = document.getElementById('introVideo');
+      const intro = document.querySelector('.intro');
+      const hero = document.getElementById('heroCopy');
+      const vision = document.getElementById('visionCopy');
+      const cue = document.querySelector('.scroll-cue');
+      const storyLink = document.querySelector('.hero-actions a[href="#visionCopy"]');
+      const setCopyInteractivity = (element, isInteractive) => {
+        if (!element) return;
+        element.inert = !isInteractive;
+        element.setAttribute('aria-hidden', String(!isInteractive));
+      };
+      const clamp01 = value => Math.min(1, Math.max(0, value));
+      const smoothstep01 = (start, end, value) => {
+        const x = clamp01((value - start) / (end - start));
+        return x * x * (3 - 2 * x);
+      };
+      const paintIntroCopy = progressValue => {
+        const introProgress = clamp01(progressValue);
+        const heroFade = 1 - smoothstep01(.05, .30, introProgress);
+        const visionFade = smoothstep01(.58, .74, introProgress);   /* full by ~74%, then holds to 100% */
+        hero.style.opacity = heroFade.toFixed(3);
+        hero.style.transform = `translate3d(0, ${(-18 * (1 - heroFade)).toFixed(2)}px, 0)`;
+        vision.style.opacity = visionFade.toFixed(3);
+        vision.style.transform = `translate3d(0, ${(22 * (1 - visionFade)).toFixed(2)}px, 0)`;
+        cue.style.opacity = (1 - smoothstep01(0, .12, introProgress)).toFixed(3);
+        setCopyInteractivity(hero, heroFade > .08);
+        setCopyInteractivity(vision, visionFade > .08);
+      };
+      paintIntroCopy(0);
+      storyLink?.addEventListener('click', event => {
+        event.preventDefault();
+        scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      });
+      // back-to-top (bottom of page returns to the beginning)
+      document.querySelectorAll('[data-scroll-top]').forEach(el => el.addEventListener('click', event => {
+        event.preventDefault();
+        scrollTo({ top: 0, behavior: 'smooth' });
+      }));
+      if (reduce) {
+        if (video) {
+          video.pause();
+          video.preload = 'none';
+        }
+        return;
+      }
+
+      if (touchLayout && video) {
+        let duration = 9.46;
+        let requestedProgress = 0;
+        let ticking = false;
+
+        const paint = () => {
+          ticking = false;
+          if (video.readyState >= 1) {
+            const target = Math.min(duration - .04, Math.max(.001, requestedProgress * duration));
+            if (Math.abs(video.currentTime - target) > .018) {
+              try { video.currentTime = target; } catch (_) {}
+            }
+          }
+          paintIntroCopy(requestedProgress);
+        };
+
+        const updateMobileScrub = () => {
+          const start = intro.offsetTop;
+          const range = Math.max(1, intro.offsetHeight - innerHeight);
+          requestedProgress = clamp01((scrollY - start) / range);
+          if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(paint);
+          }
+        };
+
+        const unlockVideo = async () => {
+          video.muted = true;
+          try {
+            await video.play();
+            video.pause();
+            if (video.currentTime < .001) video.currentTime = .001;
+          } catch (_) {}
+          updateMobileScrub();
+        };
+
+        video.addEventListener('loadedmetadata', () => {
+          if (Number.isFinite(video.duration)) duration = video.duration;
+          try { video.currentTime = .001; } catch (_) {}
+          updateMobileScrub();
+        }, { once: true });
+        addEventListener('touchstart', unlockVideo, { once: true, passive: true });
+        addEventListener('pointerdown', unlockVideo, { once: true, passive: true });
+        addEventListener('scroll', updateMobileScrub, { passive: true });
+        addEventListener('resize', updateMobileScrub, { passive: true });
+        updateMobileScrub();
+        return;
+      }
+
+      const canAnimate = window.gsap && window.ScrollTrigger;
+      if (!canAnimate) return;
+
+      gsap.registerPlugin(ScrollTrigger);
+      ScrollTrigger.config({ ignoreMobileResize: true });
+
+      let duration = 9.38;
+      video.addEventListener('loadedmetadata', () => {
+        if (Number.isFinite(video.duration)) duration = video.duration;
+        try { video.currentTime = 0.001; } catch (_) {}
+      }, { once: true });
+
+      let requestedProgress = 0;
+      let ticking = false;
+      ScrollTrigger.create({
+        trigger: '.intro',
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: true,
+        onUpdate: self => {
+          requestedProgress = self.progress;
+          paintIntroCopy(requestedProgress);
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(() => {
+            ticking = false;
+            if (video.readyState >= 1) {
+              try { video.currentTime = Math.min(duration - .04, Math.max(0, requestedProgress * duration)); } catch (_) {}
+            }
+          });
+        }
+      });
+
+    })();
+  </script>
+</body>
+</html>
