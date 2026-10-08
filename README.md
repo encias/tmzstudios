@@ -14,7 +14,7 @@ Live: https://tmzstudios.com
 
 The studio runs on **Hermes**, its own AI agent operating system (Claude + local models). The same agents that handle research, visual exploration and production tracking wrote and maintain this site: Codex and Claude Code built the page, Claude Code added the studio-system section and set up the domain, mail routing and deployment.
 
-Static site — no build step. Deployed on Cloudflare Workers (static assets) via `npx wrangler deploy`.
+Static site — no build step. Deployed on Cloudflare Workers (static assets) via `npx wrangler deploy`. A small Worker (`src/index.js`) answers HTTP Range requests for the hero video so the browser can seek while scrolling.
 
 ```bash
 npx http-server public -p 8080
