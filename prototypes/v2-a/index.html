@@ -16,23 +16,26 @@ a{color:inherit}img{display:block;max-width:100%;height:auto}
 .bar nav a:hover,.bar nav a[aria-current]{color:var(--paper)}
 .eyebrow{font:500 .7rem/1.3 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:0}
 h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;line-height:1.05}
-.intro{padding:clamp(40px,8vw,96px) var(--edge) clamp(24px,4vw,40px);display:grid;gap:18px;max-width:1100px}
-.intro h1{font-size:clamp(2.4rem,6vw,4.6rem);max-width:18ch}
+.intro{padding:32px var(--edge) 24px;display:grid;gap:18px;max-width:1100px}
+.intro h1{font-size:clamp(2rem,3.4vw,3.25rem);max-width:22ch}
 .intro p{margin:0;color:var(--muted);max-width:56ch}
 .filters{display:flex;flex-wrap:wrap;gap:8px;padding:0 var(--edge) 24px}
 .filters button{min-height:44px;padding:0 16px;border:1px solid var(--line);background:none;color:var(--muted);font:500 .85rem/1 var(--sans);cursor:pointer}
 .filters button[aria-pressed=true]{border-color:var(--accent);color:var(--paper)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,360px),1fr));gap:clamp(14px,2vw,28px);padding:0 var(--edge) 96px}
+.grid{display:grid;grid-template-columns:1fr;gap:24px;padding:0 var(--edge) 64px}
+@media (min-width:761px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1200px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .card{text-decoration:none;display:grid;gap:12px}
 .card .frame{overflow:hidden;background:var(--ink-2);aspect-ratio:16/10}
 .card img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
 .card:hover img{transform:scale(1.03)}
-.card h2{font-size:1.65rem}
-.card .meta{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:.85rem}
-.tag{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
+.card h2{font-size:1.4rem}
+.card .meta{display:grid;gap:6px;color:var(--muted);font-size:.85rem}
+.tag{font-size:.75rem;letter-spacing:.04em;color:var(--accent);white-space:normal}
 .card[hidden]{display:none}
 .hero{position:relative}
-.hero img{width:100%;max-height:82svh;object-fit:cover}
+.hero img{width:100%;height:auto}
+.back{display:inline-flex;align-items:center;min-height:44px;padding:0 var(--edge);color:var(--muted);text-decoration:none;font-size:.85rem}.back:hover{color:var(--paper)}
 .head{padding:clamp(28px,5vw,64px) var(--edge);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px 6vw;border-bottom:1px solid var(--line)}
 .head h1{font-size:clamp(2.4rem,5.5vw,4.4rem);margin-top:10px}
 .head .idea{font-family:var(--serif);font-style:italic;font-size:clamp(1.25rem,2vw,1.6rem);color:var(--paper);margin:0}
@@ -52,7 +55,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;line-height:1.05}
 <main>
 <section class="intro"><p class="eyebrow">Etkinlik · Sahne · Stand</p>
 <h1>Marka fikirlerini insanların içinde dolaştığı mekânlara dönüştürüyorum.</h1>
-<p>Bütün işler tek ekranda. Bir işe dokununca kendi sayfası açılır; geri dönünce seçtiğin filtre yerinde kalır.</p></section>
+<p>Etkinlik alanları, sahneler ve fuar standları: konseptten 3D görselleştirmeye ve sunuma kadar.</p></section>
 <div class="filters" role="group" aria-label="İşleri süz"><button type="button" data-f="all" aria-pressed="true">Tümü</button><button type="button" data-f="event" aria-pressed="false">Mekân & Etkinlik</button><button type="button" data-f="interior" aria-pressed="false">İç mekân</button><button type="button" data-f="ai" aria-pressed="false">AI ile geliştirilen</button></div>
 <section class="grid" aria-label="İşler"><a class="card" href="p/gratis.html" data-cat="event ai">
 <div class="frame"><img src="../../public/gratis_final/desktop/scene_121.jpg" srcset="../../public/gratis_final/mobile/scene_121.webp 1280w, ../../public/gratis_final/desktop/scene_121.jpg 2048w" sizes="(min-width: 760px) 33vw, 100vw" alt="Gratis — Harikalar Diyarı" width="2048" height="1152" loading="lazy" decoding="async"></div>
@@ -60,31 +63,31 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;line-height:1.05}
 <div class="meta"><span>Deneyim odaklı etkinlik tasarımı · Marka dünyası</span><span class="tag">Müşteri · Yeni yorum 2026</span></div></a><a class="card" href="p/regnum.html" data-cat="event">
 <div class="frame"><img src="../../public/selected_work_final/desktop/regnum_01_arrival.jpg" srcset="../../public/selected_work_final/mobile/regnum_01_arrival.webp 1280w, ../../public/selected_work_final/desktop/regnum_01_arrival.jpg 2048w" sizes="(min-width: 760px) 33vw, 100vw" alt="Regnum Carya · Dubai — Life. Well Lived." width="2048" height="1152" loading="lazy" decoding="async"></div>
 <div><p class="eyebrow">Regnum Carya · Dubai</p><h2>Life. Well Lived.</h2></div>
-<div class="meta"><span>Fuar standı · Otel ve misafir deneyimi</span><span class="tag">Müşteri projesi</span></div></a><a class="card" href="p/wynn.html" data-cat="event">
+<div class="meta"><span>Fuar standı · Otel ve misafir deneyimi</span><span class="tag">Müşteri için tasarım</span></div></a><a class="card" href="p/wynn.html" data-cat="event">
 <div class="frame"><img src="../../public/selected_work_final/desktop/wynn_01_hero_front.jpg" srcset="../../public/selected_work_final/mobile/wynn_01_hero_front.webp 1280w, ../../public/selected_work_final/desktop/wynn_01_hero_front.jpg 2048w" sizes="(min-width: 760px) 33vw, 100vw" alt="Wynn · Al Marjan Island — Delilah" width="2048" height="1152" loading="lazy" decoding="async"></div>
 <div><p class="eyebrow">Wynn · Al Marjan Island</p><h2>Delilah</h2></div>
-<div class="meta"><span>İki katlı fuar standı · Restoran deneyimi</span><span class="tag">Müşteri projesi</span></div></a><a class="card" href="p/masterclass.html" data-cat="event">
+<div class="meta"><span>İki katlı fuar standı · Restoran deneyimi</span><span class="tag">Müşteri için tasarım</span></div></a><a class="card" href="p/masterclass.html" data-cat="event">
 <div class="frame"><img src="../../public/selected_work_final/desktop/masterclass_01_stage_34.jpg" srcset="../../public/selected_work_final/mobile/masterclass_01_stage_34.webp 1280w, ../../public/selected_work_final/desktop/masterclass_01_stage_34.jpg 2048w" sizes="(min-width: 760px) 33vw, 100vw" alt="Romeu Felipe — Masterclass" width="2048" height="1152" loading="lazy" decoding="async"></div>
 <div><p class="eyebrow">Romeu Felipe</p><h2>Masterclass</h2></div>
-<div class="meta"><span>Etkinlik sahnesi · Eğitim ve marka sunumu</span><span class="tag">Müşteri projesi</span></div></a><a class="card" href="p/stadium.html" data-cat="event">
+<div class="meta"><span>Etkinlik sahnesi · Eğitim ve marka sunumu</span><span class="tag">Müşteri için tasarım</span></div></a><a class="card" href="p/stadium.html" data-cat="event">
 <div class="frame"><img src="../../public/selected_work_final/desktop/stadium_01_hero.jpg" srcset="../../public/selected_work_final/mobile/stadium_01_hero.webp 1280w, ../../public/selected_work_final/desktop/stadium_01_hero.jpg 2048w" sizes="(min-width: 760px) 33vw, 100vw" alt="arsaVev · Maç Günü — Taraftar Deneyimi" width="2048" height="1152" loading="lazy" decoding="async"></div>
 <div><p class="eyebrow">arsaVev · Maç Günü</p><h2>Taraftar Deneyimi</h2></div>
-<div class="meta"><span>Spor aktivasyonu · Katılım ve oyun</span><span class="tag">Müşteri projesi</span></div></a><a class="card" href="p/tio.html" data-cat="event">
+<div class="meta"><span>Spor aktivasyonu · Katılım ve oyun</span><span class="tag">Müşteri için tasarım</span></div></a><a class="card" href="p/tio.html" data-cat="event">
 <div class="frame"><img src="../../public/selected_work_final/desktop/tio_01_hero.jpg" srcset="../../public/selected_work_final/mobile/tio_01_hero.webp 1280w, ../../public/selected_work_final/desktop/tio_01_hero.jpg 2048w" sizes="(min-width: 760px) 33vw, 100vw" alt="TIO Logistics — Lojistiğin Kimyası" width="2048" height="1152" loading="lazy" decoding="async"></div>
 <div><p class="eyebrow">TIO Logistics</p><h2>Lojistiğin Kimyası</h2></div>
-<div class="meta"><span>Fuar standı · Kurumsal marka deneyimi</span><span class="tag">Müşteri projesi</span></div></a><a class="card" href="p/nissan.html" data-cat="event">
+<div class="meta"><span>Fuar standı · Kurumsal marka deneyimi</span><span class="tag">Müşteri için tasarım</span></div></a><a class="card" href="p/nissan.html" data-cat="event">
 <div class="frame"><img src="../../public/selected_work_final/desktop/nissan_01_hero.jpg" srcset="../../public/selected_work_final/mobile/nissan_01_hero.webp 1280w, ../../public/selected_work_final/desktop/nissan_01_hero.jpg 2048w" sizes="(min-width: 760px) 33vw, 100vw" alt="Nissan × Big Chefs — Kemer" width="2048" height="1152" loading="lazy" decoding="async"></div>
 <div><p class="eyebrow">Nissan × Big Chefs</p><h2>Kemer</h2></div>
-<div class="meta"><span>Otomotiv aktivasyonu · Ürün odağı</span><span class="tag">Müşteri projesi</span></div></a><a class="card" href="p/kanal7.html" data-cat="event">
+<div class="meta"><span>Otomotiv aktivasyonu · Ürün odağı</span><span class="tag">Müşteri için tasarım</span></div></a><a class="card" href="p/kanal7.html" data-cat="event">
 <div class="frame"><img src="../../public/selected_work_final/desktop/kanal_01_hero.jpg" srcset="../../public/selected_work_final/mobile/kanal_01_hero.webp 1280w, ../../public/selected_work_final/desktop/kanal_01_hero.jpg 2048w" sizes="(min-width: 760px) 33vw, 100vw" alt="Kanal 7 — 30. Yıl" width="2048" height="1152" loading="lazy" decoding="async"></div>
 <div><p class="eyebrow">Kanal 7</p><h2>30. Yıl</h2></div>
-<div class="meta"><span>Yıl dönümü etkinliği · Sahne ve konuk akışı</span><span class="tag">Müşteri projesi</span></div></a><a class="card" href="p/artas.html" data-cat="event">
+<div class="meta"><span>Yıl dönümü etkinliği · Sahne ve konuk akışı</span><span class="tag">Müşteri için tasarım</span></div></a><a class="card" href="p/artas.html" data-cat="event">
 <div class="frame"><img src="../../public/selected_work_final/desktop/artas_01_hero.jpg" srcset="../../public/selected_work_final/mobile/artas_01_hero.webp 1280w, ../../public/selected_work_final/desktop/artas_01_hero.jpg 2048w" sizes="(min-width: 760px) 33vw, 100vw" alt="Artaş Hotels Group — İki Katlı Stand" width="2048" height="1152" loading="lazy" decoding="async"></div>
 <div><p class="eyebrow">Artaş Hotels Group</p><h2>İki Katlı Stand</h2></div>
-<div class="meta"><span>Fuar standı · Otel markası sunumu</span><span class="tag">Müşteri projesi</span></div></a><a class="card" href="p/dum.html" data-cat="interior">
+<div class="meta"><span>Fuar standı · Otel markası sunumu</span><span class="tag">Müşteri için tasarım</span></div></a><a class="card" href="p/dum.html" data-cat="interior">
 <div class="frame"><img src="../../public/selected_work_final/desktop/dum_01_hero.jpg" srcset="../../public/selected_work_final/mobile/dum_01_hero.webp 1280w, ../../public/selected_work_final/desktop/dum_01_hero.jpg 2048w" sizes="(min-width: 760px) 33vw, 100vw" alt="DUM — Çalışma Alanları" width="2048" height="1152" loading="lazy" decoding="async"></div>
 <div><p class="eyebrow">DUM</p><h2>Çalışma Alanları</h2></div>
-<div class="meta"><span>Ofis iç mekanı · Çalışma alanı tasarımı</span><span class="tag">Müşteri projesi</span></div></a></section></main>
+<div class="meta"><span>Ofis iç mekanı · Çalışma alanı tasarımı</span><span class="tag">Müşteri için tasarım</span></div></a></section></main>
 <script>
 (() => {
   const btns = [...document.querySelectorAll('.filters button')], cards = [...document.querySelectorAll('.card')];

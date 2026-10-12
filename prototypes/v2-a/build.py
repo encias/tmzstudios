@@ -28,7 +28,7 @@ EXTRA = {
     "wynn": {"role": "Konsept, alan tasarımı, 3D modelleme, görselleştirme ve proje sunumu."},
 }
 CATEGORY = {"dum": "interior"}  # everything else is event / exhibition
-LABEL_DEFAULT = "Müşteri projesi"
+LABEL_DEFAULT = "Müşteri için tasarım"  # built or not is unverified per project
 
 
 def tr_copy():
@@ -87,23 +87,26 @@ a{color:inherit}img{display:block;max-width:100%;height:auto}
 .bar nav a:hover,.bar nav a[aria-current]{color:var(--paper)}
 .eyebrow{font:500 .7rem/1.3 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:0}
 h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;line-height:1.05}
-.intro{padding:clamp(40px,8vw,96px) var(--edge) clamp(24px,4vw,40px);display:grid;gap:18px;max-width:1100px}
-.intro h1{font-size:clamp(2.4rem,6vw,4.6rem);max-width:18ch}
+.intro{padding:32px var(--edge) 24px;display:grid;gap:18px;max-width:1100px}
+.intro h1{font-size:clamp(2rem,3.4vw,3.25rem);max-width:22ch}
 .intro p{margin:0;color:var(--muted);max-width:56ch}
 .filters{display:flex;flex-wrap:wrap;gap:8px;padding:0 var(--edge) 24px}
 .filters button{min-height:44px;padding:0 16px;border:1px solid var(--line);background:none;color:var(--muted);font:500 .85rem/1 var(--sans);cursor:pointer}
 .filters button[aria-pressed=true]{border-color:var(--accent);color:var(--paper)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,360px),1fr));gap:clamp(14px,2vw,28px);padding:0 var(--edge) 96px}
+.grid{display:grid;grid-template-columns:1fr;gap:24px;padding:0 var(--edge) 64px}
+@media (min-width:761px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1200px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .card{text-decoration:none;display:grid;gap:12px}
 .card .frame{overflow:hidden;background:var(--ink-2);aspect-ratio:16/10}
 .card img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
 .card:hover img{transform:scale(1.03)}
-.card h2{font-size:1.65rem}
-.card .meta{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:.85rem}
-.tag{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
+.card h2{font-size:1.4rem}
+.card .meta{display:grid;gap:6px;color:var(--muted);font-size:.85rem}
+.tag{font-size:.75rem;letter-spacing:.04em;color:var(--accent);white-space:normal}
 .card[hidden]{display:none}
 .hero{position:relative}
-.hero img{width:100%;max-height:82svh;object-fit:cover}
+.hero img{width:100%;height:auto}
+.back{display:inline-flex;align-items:center;min-height:44px;padding:0 var(--edge);color:var(--muted);text-decoration:none;font-size:.85rem}.back:hover{color:var(--paper)}
 .head{padding:clamp(28px,5vw,64px) var(--edge);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px 6vw;border-bottom:1px solid var(--line)}
 .head h1{font-size:clamp(2.4rem,5.5vw,4.4rem);margin-top:10px}
 .head .idea{font-family:var(--serif);font-style:italic;font-size:clamp(1.25rem,2vw,1.6rem);color:var(--paper);margin:0}
@@ -156,7 +159,7 @@ def build():
     index_body = f"""<main>
 <section class="intro"><p class="eyebrow">Etkinlik · Sahne · Stand</p>
 <h1>Marka fikirlerini insanların içinde dolaştığı mekânlara dönüştürüyorum.</h1>
-<p>Bütün işler tek ekranda. Bir işe dokununca kendi sayfası açılır; geri dönünce seçtiğin filtre yerinde kalır.</p></section>
+<p>Etkinlik alanları, sahneler ve fuar standları: konseptten 3D görselleştirmeye ve sunuma kadar.</p></section>
 <div class="filters" role="group" aria-label="İşleri süz">{buttons}</div>
 <section class="grid" aria-label="İşler">{''.join(cards)}</section></main>
 <script>
@@ -182,6 +185,7 @@ def build():
         if p.get("role"):
             facts += f"<div><dt>Katkım</dt><dd>{html.escape(p['role'])}</dd></div>"
         body = f"""<main>
+<a class="back" href="../index.html" data-index>← İşlere dön</a>
 <div class="hero">{pic(p['images'][0], p['kicker'] + ' — ' + p['title'], '100vw', lazy=False).replace(ASSET, '../' + ASSET)}</div>
 <section class="head"><div><p class="eyebrow">{html.escape(p['kicker'])}</p><h1>{html.escape(p['title'])}</h1></div>
 <div><p class="idea">{html.escape(p['idea'])}</p></div>
