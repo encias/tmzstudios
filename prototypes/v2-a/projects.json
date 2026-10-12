@@ -1,0 +1,153 @@
+[
+ {
+  "category": "event",
+  "label": "Müşteri · Yeni yorum 2026",
+  "kicker": "Gratis",
+  "title": "Harikalar Diyarı",
+  "sub": "Deneyim odaklı etkinlik tasarımı · Marka dünyası",
+  "idea": "Ziyaretçiyi karşılamadan keşfe, atölyelerden ana sahneye taşıyan Harikalar Diyarı temalı bir etkinlik deneyimi.",
+  "ai": true,
+  "slug": "gratis",
+  "images": [
+   "gratis_final/desktop/scene_121.jpg",
+   "gratis_final/desktop/scene_122.jpg",
+   "gratis_final/desktop/scene_126.jpg",
+   "gratis_final/desktop/scene_135.jpg",
+   "gratis_final/desktop/scene_131.jpg",
+   "gratis_final/desktop/scene_128.jpg",
+   "gratis_final/desktop/scene_130.jpg"
+  ]
+ },
+ {
+  "kicker": "Regnum Carya · Dubai",
+  "title": "Life. Well Lived.",
+  "sub": "Fuar standı · Otel ve misafir deneyimi",
+  "idea": "Resort görsellerini, sıcak ahşabı ve bütünleşik ışığı toplantı ve sohbet için açık bir fuar ortamında bir araya getiriyor.",
+  "category": "event",
+  "label": "Müşteri projesi",
+  "slug": "regnum",
+  "images": [
+   "selected_work_final/desktop/regnum_01_arrival.jpg",
+   "selected_work_final/desktop/regnum_02_front.jpg",
+   "selected_work_final/desktop/regnum_03_lounge.jpg",
+   "selected_work_final/desktop/regnum_04_wide.jpg"
+  ]
+ },
+ {
+  "kicker": "Wynn · Al Marjan Island",
+  "title": "Delilah",
+  "sub": "İki katlı fuar standı · Restoran deneyimi",
+  "idea": "Karanlığın içinde ışığı, malzemesi ve siluetiyle kendi kimliğini kuran iki katlı bir restoran deneyimi.",
+  "role": "Konsept, alan tasarımı, 3D modelleme, görselleştirme ve proje sunumu.",
+  "category": "event",
+  "label": "Müşteri projesi",
+  "slug": "wynn",
+  "images": [
+   "selected_work_final/desktop/wynn_01_hero_front.jpg",
+   "selected_work_final/desktop/wynn_02_object_34.jpg",
+   "selected_work_final/desktop/wynn_03_delilah_neon.jpg",
+   "selected_work_final/desktop/wynn_04_dining.jpg",
+   "selected_work_final/desktop/wynn_05_conference.jpg",
+   "selected_work_final/desktop/wynn_06_lounge.jpg",
+   "selected_work_final/desktop/wynn_07_exterior_alt.jpg"
+  ]
+ },
+ {
+  "kicker": "Romeu Felipe",
+  "title": "Masterclass",
+  "sub": "Etkinlik sahnesi · Eğitim ve marka sunumu",
+  "idea": "Mermer, altın ve kontrollü ışık; masterclass için odaklı ve güçlü bir sahne kimliği kuruyor.",
+  "category": "event",
+  "label": "Müşteri projesi",
+  "slug": "masterclass",
+  "images": [
+   "selected_work_final/desktop/masterclass_01_stage_34.jpg",
+   "selected_work_final/desktop/masterclass_02_gold_wall.jpg",
+   "selected_work_final/desktop/masterclass_03_front_hero.jpg"
+  ]
+ },
+ {
+  "kicker": "arsaVev · Maç Günü",
+  "title": "Taraftar Deneyimi",
+  "sub": "Spor aktivasyonu · Katılım ve oyun",
+  "idea": "Kulüp kimliğini oyunlara, bilgi yarışmasına ve birlikte yaşanan maç günü anlarına dönüştüren kompakt bir taraftar alanı.",
+  "category": "event",
+  "label": "Müşteri projesi",
+  "slug": "stadium",
+  "images": [
+   "selected_work_final/desktop/stadium_01_hero.jpg",
+   "selected_work_final/desktop/stadium_04_photoreal.jpg",
+   "selected_work_final/desktop/stadium_02_crest_pitch.jpg",
+   "selected_work_final/desktop/stadium_03_entrance.jpg"
+  ]
+ },
+ {
+  "kicker": "TIO Logistics",
+  "title": "Lojistiğin Kimyası",
+  "sub": "Fuar standı · Kurumsal marka deneyimi",
+  "idea": "Siyah hacimler, net bir kırmızı çizgi ve ürün sergilemeleri; endüstriyel marka dilini güçlü bir fuar sistemine dönüştürüyor.",
+  "category": "event",
+  "label": "Müşteri projesi",
+  "slug": "tio",
+  "images": [
+   "selected_work_final/desktop/tio_01_hero.jpg",
+   "selected_work_final/desktop/tio_02_logo_wall.jpg",
+   "selected_work_final/desktop/tio_03_product.jpg",
+   "selected_work_final/desktop/tio_04_lounge.jpg"
+  ]
+ },
+ {
+  "kicker": "Nissan × Big Chefs",
+  "title": "Kemer",
+  "sub": "Otomotiv aktivasyonu · Ürün odağı",
+  "idea": "Tek ve güçlü bir kemer, aracı çerçeveliyor ve iş birliği için uzaktan tanınan bir buluşma noktası oluşturuyor.",
+  "category": "event",
+  "label": "Müşteri projesi",
+  "slug": "nissan",
+  "images": [
+   "selected_work_final/desktop/nissan_01_hero.jpg"
+  ]
+ },
+ {
+  "kicker": "Kanal 7",
+  "title": "30. Yıl",
+  "sub": "Yıl dönümü etkinliği · Sahne ve konuk akışı",
+  "idea": "Yıl dönümü kimliğini girişten ana sahneye kadar taşıyan bütünlüklü bir etkinlik dili.",
+  "category": "event",
+  "label": "Müşteri projesi",
+  "slug": "kanal7",
+  "images": [
+   "selected_work_final/desktop/kanal_01_hero.jpg",
+   "selected_work_final/desktop/kanal_02_logo.jpg",
+   "selected_work_final/desktop/kanal_03_wide.jpg"
+  ]
+ },
+ {
+  "kicker": "Artaş Hotels Group",
+  "title": "İki Katlı Stand",
+  "sub": "Fuar standı · Otel markası sunumu",
+  "idea": "Ahşap, bitkilendirme ve yumuşak ışık; toplantı, sunum ve misafir görüşmeleri için dengeli bir ortam kuruyor.",
+  "category": "event",
+  "label": "Müşteri projesi",
+  "slug": "artas",
+  "images": [
+   "selected_work_final/desktop/artas_01_hero.jpg",
+   "selected_work_final/desktop/artas_02_front.jpg",
+   "selected_work_final/desktop/artas_03_interior.jpg"
+  ]
+ },
+ {
+  "kicker": "DUM",
+  "title": "Çalışma Alanları",
+  "sub": "Ofis iç mekanı · Çalışma alanı tasarımı",
+  "idea": "Renk, geometrik aydınlatma ve farklı karakterdeki odalar çalışma alanına net bir ritim ve kimlik kazandırıyor.",
+  "category": "interior",
+  "label": "Müşteri projesi",
+  "slug": "dum",
+  "images": [
+   "selected_work_final/desktop/dum_01_hero.jpg",
+   "selected_work_final/desktop/dum_02_meeting.jpg",
+   "selected_work_final/desktop/dum_03_open.jpg"
+  ]
+ }
+]

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>30. Yıl — TEMİZ STUDIO</title><meta name="robots" content="noindex">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap');
+:root{--ink:#0d0a08;--ink-2:#17110e;--paper:#f1e9df;--muted:#b3a698;--line:rgba(241,233,223,.14);--accent:#c7a679;
+--serif:"Cormorant Garamond",Georgia,serif;--sans:Inter,system-ui,sans-serif;--edge:clamp(16px,4vw,48px)}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ink);color:var(--paper);font:400 1rem/1.6 var(--sans)}
+a{color:inherit}img{display:block;max-width:100%;height:auto}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.bar{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:16px;
+ padding:0 var(--edge);height:60px;background:rgba(13,10,8,.92);border-bottom:1px solid var(--line)}
+.brand{font:600 .78rem/1 var(--sans);letter-spacing:.28em;text-decoration:none;min-height:44px;display:flex;align-items:center}
+.bar nav{display:flex;gap:2px}.bar nav a{font-size:.85rem;color:var(--muted);text-decoration:none;padding:12px 10px;min-height:44px;display:inline-flex;align-items:center}
+.bar nav a:hover,.bar nav a[aria-current]{color:var(--paper)}
+.eyebrow{font:500 .7rem/1.3 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:0}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;line-height:1.05}
+.intro{padding:clamp(40px,8vw,96px) var(--edge) clamp(24px,4vw,40px);display:grid;gap:18px;max-width:1100px}
+.intro h1{font-size:clamp(2.4rem,6vw,4.6rem);max-width:18ch}
+.intro p{margin:0;color:var(--muted);max-width:56ch}
+.filters{display:flex;flex-wrap:wrap;gap:8px;padding:0 var(--edge) 24px}
+.filters button{min-height:44px;padding:0 16px;border:1px solid var(--line);background:none;color:var(--muted);font:500 .85rem/1 var(--sans);cursor:pointer}
+.filters button[aria-pressed=true]{border-color:var(--accent);color:var(--paper)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,360px),1fr));gap:clamp(14px,2vw,28px);padding:0 var(--edge) 96px}
+.card{text-decoration:none;display:grid;gap:12px}
+.card .frame{overflow:hidden;background:var(--ink-2);aspect-ratio:16/10}
+.card img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.card:hover img{transform:scale(1.03)}
+.card h2{font-size:1.65rem}
+.card .meta{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:.85rem}
+.tag{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
+.card[hidden]{display:none}
+.hero{position:relative}
+.hero img{width:100%;max-height:82svh;object-fit:cover}
+.head{padding:clamp(28px,5vw,64px) var(--edge);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px 6vw;border-bottom:1px solid var(--line)}
+.head h1{font-size:clamp(2.4rem,5.5vw,4.4rem);margin-top:10px}
+.head .idea{font-family:var(--serif);font-style:italic;font-size:clamp(1.25rem,2vw,1.6rem);color:var(--paper);margin:0}
+.facts{margin:0;display:grid;gap:14px;align-content:start}
+.facts dt{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.facts dd{margin:4px 0 0}
+.shots{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(10px,1.4vw,20px);padding:clamp(28px,5vw,64px) var(--edge)}
+.shots figure{margin:0;grid-column:span 6}.shots figure:nth-child(3n+1){grid-column:1/-1}
+.pager{display:flex;justify-content:space-between;gap:16px;padding:32px var(--edge) 80px;border-top:1px solid var(--line)}
+.pager a{text-decoration:none;min-height:44px;display:grid;gap:4px}
+.pager a span{font-family:var(--serif);font-size:1.4rem}
+@media (max-width:760px){.head{grid-template-columns:1fr}.shots figure,.shots figure:nth-child(3n+1){grid-column:1/-1}.bar nav a.hide-sm{display:none}}
+@media (prefers-reduced-motion:reduce){.card img{transition:none}.card:hover img{transform:none}}
+</style></head><body>
+<header class="bar"><a class="brand" href="../index.html">TEMİZ STUDIO</a>
+<nav aria-label="Ana menü"><a href="../index.html" aria-current="page">İşler</a><a class="hide-sm" href="https://tmzstudios.com/">Giriş filmi</a><a href="mailto:suleyman@tmzstudios.com">İletişim</a></nav></header>
+<main>
+<div class="hero"><img src="../../../public/selected_work_final/desktop/kanal_01_hero.jpg" srcset="../../../public/selected_work_final/mobile/kanal_01_hero.webp 1280w, ../../../public/selected_work_final/desktop/kanal_01_hero.jpg 2048w" sizes="100vw" alt="Kanal 7 — 30. Yıl" width="2048" height="1152" fetchpriority="high"></div>
+<section class="head"><div><p class="eyebrow">Kanal 7</p><h1>30. Yıl</h1></div>
+<div><p class="idea">Yıl dönümü kimliğini girişten ana sahneye kadar taşıyan bütünlüklü bir etkinlik dili.</p></div>
+<dl class="facts"><div><dt>Tür</dt><dd>Yıl dönümü etkinliği · Sahne ve konuk akışı</dd></div><div><dt>Statü</dt><dd>Müşteri projesi</dd></div></dl></section>
+<section class="shots" aria-label="Görseller"><figure><img src="../../../public/selected_work_final/desktop/kanal_02_logo.jpg" srcset="../../../public/selected_work_final/mobile/kanal_02_logo.webp 1280w, ../../../public/selected_work_final/desktop/kanal_02_logo.jpg 2048w" sizes="(min-width: 760px) 50vw, 100vw" alt="30. Yıl" width="2048" height="1152" loading="lazy" decoding="async"></figure><figure><img src="../../../public/selected_work_final/desktop/kanal_03_wide.jpg" srcset="../../../public/selected_work_final/mobile/kanal_03_wide.webp 1280w, ../../../public/selected_work_final/desktop/kanal_03_wide.jpg 2048w" sizes="(min-width: 760px) 50vw, 100vw" alt="30. Yıl" width="2048" height="1152" loading="lazy" decoding="async"></figure></section>
+<nav class="pager" aria-label="Projeler arası"><a href="nissan.html"><small class="eyebrow">Önceki</small><span>Kemer</span></a>
+<a href="../index.html" data-index><small class="eyebrow">Tüm işler</small><span>İndeks</span></a>
+<a href="artas.html" style="text-align:right"><small class="eyebrow">Sonraki</small><span>İki Katlı Stand</span></a></nav></main>
+<script>
+// Back to the index keeps the filter the visitor picked (it lives in the index URL).
+(() => {
+  const r = document.referrer;
+  if (!r || !/\/index\.html|\/v2-a\/(\?|$)/.test(r)) return;
+  document.querySelectorAll('a[data-index]').forEach(a => a.href = r);
+})();
+</script>
+</body></html>
